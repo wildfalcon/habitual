@@ -3,7 +3,7 @@ class CreateHabits < ActiveRecord::Migration
     create_table :habits do |t|
       t.string :name
       t.date :start_date
-      t.date :end_date
+      t.date :last_completed_date
       t.integer :user_id
 
       t.timestamps

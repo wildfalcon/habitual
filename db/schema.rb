@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20101208125802) do
   create_table "habits", :force => true do |t|
     t.string   "name"
     t.date     "start_date"
-    t.date     "end_date"
+    t.date     "last_completed_date"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
