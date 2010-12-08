@@ -1,4 +1,6 @@
 Habitual::Application.routes.draw do
+  get "home/index"
+
   resources :habits
 
   # The priority is based upon order of creation:
