@@ -1,0 +1,48 @@
+@mixin clearfix {
+  // Taken from http://css-discuss.incutio.com/wiki/Clearing_Space (Option 2)
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+  display: inline-block;
+
+  /* Hides from IE5/Mac \*/
+  * html & {height: 1px;}
+  & {display: block;}
+  /* End hide from IE5/Mac */
+}
+
+@mixin gradient_background($start_color, $end_color, $default_color) {
+  background: $default_color; /* for non-css3 browsers */
+  background: -webkit-gradient(linear, left top, left bottom, from($start_color), to($end_color)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  $start_color,  $end_color); /* for firefox 3.6+ */    
+}
+
+@mixin rounded_corners($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin rounded_top_corners($radius) {
+  -webkit-border-top-left-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-radius-topleft: $radius;
+  -moz-border-radius-topright: $radius;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin rounded_bottom_corners($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  -moz-border-radius-bottomright: $radius;
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+}

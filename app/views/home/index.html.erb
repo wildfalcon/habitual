@@ -1,11 +1,10 @@
-
-
-<div class="habits">
-  
-</div>
+<div class="habits"></div>
 
 <script type="text/javascript" charset="utf-8">
 $(function() {  
   $('.habits').habitList();
+  Habit.load(function() {
+    Habit.trigger('habits.loaded');
+  });
 });
 </script>

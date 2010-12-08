@@ -1,6 +1,50 @@
 .habits {
-  background: green; }
+  background: white;
+  /* for non-css3 browsers */
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#dddddd));
+  /* for webkit browsers */
+  background: -moz-linear-gradient(top, white, #dddddd);
+  /* for firefox 3.6+ */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 900px;
+  margin: 0 auto; }
   .habits .habit {
-    width: 300px;
-    height: 100px;
-    background: red; }
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #bbb;
+    background: #dddddd;
+    /* for non-css3 browsers */
+    background: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#bbbbbb));
+    /* for webkit browsers */
+    background: -moz-linear-gradient(top, #dddddd, #bbbbbb);
+    /* for firefox 3.6+ */ }
+    .habits .habit .calendar {
+      display: inline-block;
+      /* Hides from IE5/Mac \*/
+      /* End hide from IE5/Mac */
+      margin: 10px; }
+      .habits .habit .calendar:after {
+        content: ".";
+        display: block;
+        height: 0;
+        font-size: 0;
+        clear: both;
+        visibility: hidden; }
+      * html .habits .habit .calendar {
+        height: 1px; }
+      .habits .habit .calendar {
+        display: block; }
+      .habits .habit .calendar .day {
+        border: 1px solid #bbb;
+        background: white;
+        font-family: 'Comic Sans', 'Comic Sans MS', 'cursive';
+        text-align: center;
+        height: 110px;
+        width: 110px;
+        float: left; }

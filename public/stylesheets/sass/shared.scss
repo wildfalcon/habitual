@@ -1,8 +1,31 @@
-.habits{
- background: green;
+@import 'mixins';
+
+
+.habits {
+ @include gradient-background(white, #ddd, white);
+ @include rounded_corners(5px);
+ border: 1px solid #ddd;
+ width: 900px;
+ margin: 0 auto;
  .habit{
-   width: 300px;
-   height: 100px;
-   background: red;
+   @include rounded_corners(5px);
+   margin: 10px;
+   padding: 10px;
+   border: 1px solid #bbb;
+    @include gradient-background(#ddd, #bbb, #ddd);
+   .calendar{
+     @include clearfix;
+     margin: 10px;
+     .day{
+       border: 1px solid #bbb;
+       background: white;
+       font-family: 'Comic Sans', 'Comic Sans MS', 'cursive';
+       text-align: center;
+       height: 110px;
+       width: 110px;
+       float: left;
+       
+     }
+   }
  } 
 }
