@@ -2,8 +2,11 @@
 <html>
 <head>
   <title>Habitual</title>
-  <%= stylesheet_link_tag ["reset.css"] %>
-  <%= javascript_include_tag ["jquery-1.4.4.min", "js-model-0.9.4.min", "application"] %>
+  <%= stylesheet_link_tag ["reset.css", "defaults.css", "shared.css"] %>
+  <%= javascript_include_tag ["lib/jquery-1.4.4.min", 
+                              "lib/js-model-0.9.4.min", 
+                              "models/habit",
+                              "plugins/habit_list"] %>
   <%= csrf_meta_tag %>
 </head>
 <body>
