@@ -41,10 +41,18 @@
       .habits .habit .calendar {
         display: block; }
       .habits .habit .calendar .day {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
         border: 1px solid #bbb;
+        margin: 3px;
         background: white;
-        font-family: 'Comic Sans', 'Comic Sans MS', 'cursive';
+        font-family: 'Gill Sans', 'sans-serif';
         text-align: center;
+        color: #bbb;
+        line-height: 110px;
         height: 110px;
         width: 110px;
         float: left; }
+        .habits .habit .calendar .day.completed {
+          background-color: red; }

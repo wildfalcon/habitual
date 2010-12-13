@@ -10,24 +10,57 @@
   };
   HabitRow.prototype = {
     showCalendar: function(){
-      this.hideAllCalendars();
       if (this.$habitCalendar == null){
         this.$habitCalendar = this.createCalendar();
+        this.$habitCalendar.hide();
       }
-      this.$habitCalendar.hide();
-      this.$elem.append(this.$habitCalendar);
-      this.$habitCalendar.slideDown();
+      if (this.$habitCalendar.css("display")=="none"){
+        this.hideAllCalendars();
+        this.$habitCalendar.hide();
+        this.$elem.append(this.$habitCalendar);
+        this.$habitCalendar.slideDown();
+      } else {
+        this.$habitCalendar.slideUp();
+      };
     },
     hideAllCalendars: function(){
       $('.habit .calendar').slideUp();
     },
     createCalendar: function(){
+      var self = this;
       var cal = $('<div>').addClass("calendar");
-      $.each(this.habit.allDays(), function(index, day){
-        var day = $("<div>").addClass("day").html(day.getDate()+"/"+(day.getMonth()+1));
+      $.each(this.habit.allDays(), function(index, date){
+        var day = $("<div>").addClass("day").html(date.getDate()+"/"+(date.getMonth()+1));
+        day.habitDay(self.habit, date);
         day.appendTo(cal);
       });
       return cal;
+    }
+  };
+
+  var HabitDay = function($day, habit, date){
+    var self = this;
+    self.$day = $day;
+    self.date = date;
+    this.habit = habit;
+    
+    var beforeCompletedDate = this.habit.lastCompletedDate().compareTo(date)>0;
+    var isCompletedDate = this.habit.lastCompletedDate().compareTo(date)==0;
+    
+    if ( beforeCompletedDate || isCompletedDate ){
+      self.$day.addClass("completed");
+    }
+    
+    $day.click(function(){
+      if (self.markCompleted()){
+        self.$day.addClass("completed");
+      }
+      return false;
+    });
+  };
+  HabitDay.prototype = {
+    markCompleted: function(){
+      return this.habit.completeDate(this.date);
     }
   };
 
@@ -56,4 +89,11 @@
     return this;
   };
 
+
+  $.fn.habitDay = function(habit, date){
+    this.each(function(){
+      new HabitDay($(this), habit, date);
+    });
+    return this;
+  };
 })(jQuery);
