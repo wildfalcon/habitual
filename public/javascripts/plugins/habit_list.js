@@ -44,13 +44,15 @@
     self.date = date;
     this.habit = habit;
     
-    var beforeCompletedDate = this.habit.lastCompletedDate().compareTo(date)>0;
-    var isCompletedDate = this.habit.lastCompletedDate().compareTo(date)==0;
-    
-    if ( beforeCompletedDate || isCompletedDate ){
-      self.$day.addClass("completed");
+    if (this.habit.lastCompletedDate()){
+      var beforeCompletedDate = this.habit.lastCompletedDate().compareTo(date)>0;
+      var isCompletedDate = this.habit.lastCompletedDate().compareTo(date)==0;
+
+      if ( beforeCompletedDate || isCompletedDate ){
+        self.$day.addClass("completed");
+      }
     }
-    
+
     $day.click(function(){
       if (self.markCompleted()){
         self.$day.addClass("completed");
