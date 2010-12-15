@@ -5,7 +5,7 @@ gem 'mysql2'
 gem 'inherited_resources'
 gem 'haml'
 gem "devise", :git => "https://github.com/plataformatec/devise.git"
-
+gem "oa-oauth", :require => "omniauth/oauth"
 
 group :development, :test do
   gem 'rspec-rails'
