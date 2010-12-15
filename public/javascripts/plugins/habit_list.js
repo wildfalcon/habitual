@@ -38,7 +38,30 @@
     var self = this;
     self.habit = habit;
     self.$elem = $("<div>").addClass("habit");
+    
+    
     $('<h2>').html(habit.attr("name")).appendTo(self.$elem);
+    
+    var $deleteForm = $("<form>").addClass("delete_form").append("<button>Delete</button>");
+    $deleteForm.attr("action", "#/habits/"+habit.id());
+      
+    $deleteForm.find('button').bind("click", function(evt){
+      var confirmed = confirm("Are you sure you wish to delete?");
+      if(confirmed){
+        $(this).parent().submit(); //IE7 needs this explicitly
+      }
+      evt.stopPropagation();
+      return false;
+    });
+    $deleteForm.prepend($('<input>').attr({type: 'hidden', name: '_method', value: 'delete'}));
+    $deleteForm.appendTo(self.$elem);
+    
+    self.habit.bind("remove", function(){
+      self.$elem.fadeOut(600, function(){
+        self.$elem.remove();
+      });
+    })
+    
     self.$elem.click(function(){self.showCalendar();});
     return self.$elem;
   };
@@ -80,11 +103,10 @@
     var self = this;
     this.$elem = $elem;
     
-    Habit.bind("habits.loaded", function(){
-      $.each(Habit.all(), function(index, habit){
-        self.addHabbitCalendar(habit);
-      });
+    Habit.bind("add", function(habit){
+      self.addHabbitCalendar(habit);
     });
+    
   };
   HabitList.prototype = {
     addHabbitCalendar: function(habit){
