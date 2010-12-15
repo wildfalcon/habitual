@@ -11,7 +11,17 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<fb:login-button></fb:login-button>
+
+
+<% if user_logged_in? %>
+<div id="fb cookie">
+  Current User: <%= current_user.fb_uid %>
+</div>
+<% else %>
+  <fb:login-button></fb:login-button>
+<% end %>
+
+
 <div id="flash">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
@@ -26,7 +36,7 @@
   FB.Event.subscribe('auth.sessionChange', function(response) {
     console.log("FB: ", response);
     if (response.session) {
-      // A user has logged in, and a new cookie has been saved
+      window.location.reload();
     } else {
       // The user has logged out, and the cookie has been cleared
     }
