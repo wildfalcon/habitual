@@ -11,7 +11,10 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-Hello, i'm a header
+<div id="header">
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+</div>
+<hr/>
 <div id="flash">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
