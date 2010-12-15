@@ -7,7 +7,11 @@ module ApplicationHelper
   def current_user
     @current_user ||= begin
       return nil unless fb_info && fb_info['uid']
-      user = User.find_or_create_by_fb_uid(fb_info["uid"])
+      user = User.find_by_uid(fb_info["uid"])
+      user = User.create!(fb_info.slice("uid", "access_token")) if user.nil?
+      user.access_token = fb_info["access_token"]
+      user.save
+      user
     end
   end
 

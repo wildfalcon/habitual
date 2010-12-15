@@ -22,11 +22,14 @@ ActiveRecord::Schema.define(:version => 20101215121753) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "fb_uid"
+    t.string   "uid",          :null => false
+    t.string   "access_token"
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["fb_uid"], :name => "index_users_on_fb_uid", :unique => true
+  add_index "users", ["uid"], :name => "index_users_on_uid", :unique => true
 
 end

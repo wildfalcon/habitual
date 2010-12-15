@@ -12,15 +12,13 @@
 </head>
 <body>
 
-
-<% if user_logged_in? %>
-<div id="fb cookie">
-  Current User: <%= current_user.fb_uid %>
+<div id="auth">
+  <% if user_logged_in? %>
+    Current User: <%= current_user.uid %>
+  <% else %>
+    <fb:login-button perms="email"></fb:login-button>
+  <% end %>
 </div>
-<% else %>
-  <fb:login-button></fb:login-button>
-<% end %>
-
 
 <div id="flash">
   <p class="notice"><%= notice %></p>
@@ -38,7 +36,7 @@
     if (response.session) {
       window.location.reload();
     } else {
-      // The user has logged out, and the cookie has been cleared
+      window.location.reload();
     }
   });
 </script>
