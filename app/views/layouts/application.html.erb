@@ -11,8 +11,35 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-Hello, i'm a header
+
+<div id="auth">
+  <% if user_logged_in? %>
+    Current User: <%= current_user.uid %>
+  <% else %>
+    <fb:login-button perms="email"></fb:login-button>
+  <% end %>
+</div>
+
+<div id="flash">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+
 <%= yield %>
+
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+  FB.init({appId: '<%= ENV["FB_APP_ID"] %>', status: true, cookie: true, xfbml: true});
+  FB.Event.subscribe('auth.sessionChange', function(response) {
+    console.log("FB: ", response);
+    if (response.session) {
+      window.location.reload();
+    } else {
+      window.location.reload();
+    }
+  });
+</script>
 
 </body>
 </html>
