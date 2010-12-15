@@ -11,16 +11,27 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div id="header">
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-</div>
-<hr/>
+<fb:login-button></fb:login-button>
 <div id="flash">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 </div>
 
 <%= yield %>
+
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+  FB.init({appId: '<%= ENV["FB_APP_ID"] %>', status: true, cookie: true, xfbml: true});
+  FB.Event.subscribe('auth.sessionChange', function(response) {
+    console.log("FB: ", response);
+    if (response.session) {
+      // A user has logged in, and a new cookie has been saved
+    } else {
+      // The user has logged out, and the cookie has been cleared
+    }
+  });
+</script>
 
 </body>
 </html>
