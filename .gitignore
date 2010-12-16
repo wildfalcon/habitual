@@ -3,3 +3,4 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 config/initializers/aaa_development.rb
+public/stylesheets/*.css
