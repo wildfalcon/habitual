@@ -2,6 +2,8 @@ require 'net/https'
 
 class User < ActiveRecord::Base
   
+    has_many :habits
+  
     after_create :pull_profile_from_facebook
 
     private

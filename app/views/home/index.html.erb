@@ -27,11 +27,15 @@
   </script>
 <% end %>
 
-<div id="new habbit">
+<div id="new_habit">
+  
   <form action="#/habits", method="post">
+    <fieldset>
+      <legend>Create a new habit</legend>
     <label id="name">Name</label>
     <input type="textfield" name="name"></input>
     <input type="submit"></input>
+    </fieldset>
   </form>
 </div>
 <div class="habits"></div>

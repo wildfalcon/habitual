@@ -1,0 +1,27 @@
+#wrap {
+  width: 960px;
+  margin: 0 auto; }
+  #wrap #header {
+@incldue clearfix;
+    height: 100px; }
+    #wrap #header #auth {
+      margin: 10px;
+      width: 200px;
+      float: right; }
+  #wrap #main #primary {
+    float: left;
+    width: 640px; }
+  #wrap #main #secondary {
+    float: right;
+    width: 320px; }
+    #wrap #main #secondary #mpu {
+      margin: 10px auto 0 auto;
+      height: 250px;
+      width: 300px;
+      outline: 1px solid black; }
+
+#footer {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #bbb; }

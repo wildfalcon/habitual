@@ -1,3 +1,37 @@
+body {
+  background: #ddd; }
+
+#wrap {
+  background: white;
+  /* for non-css3 browsers */
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#dddddd));
+  /* for webkit browsers */
+  background: -moz-linear-gradient(top, white, #dddddd);
+  /* for firefox 3.6+ */ }
+
+#header {
+  background: #bbbbbb;
+  /* for non-css3 browsers */
+  background: -webkit-gradient(linear, left top, left bottom, from(#bbbbbb), to(white));
+  /* for webkit browsers */
+  background: -moz-linear-gradient(top, #bbbbbb, white);
+  /* for firefox 3.6+ */ }
+
+#new_habit {
+  background: white;
+  /* for non-css3 browsers */
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#c3daad));
+  /* for webkit browsers */
+  background: -moz-linear-gradient(top, white, #c3daad);
+  /* for firefox 3.6+ */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #C3DAAD;
+  width: 560px;
+  margin: 20px auto;
+  padding: 20px; }
+
 .habits {
   background: white;
   /* for non-css3 browsers */
@@ -9,7 +43,7 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #ddd;
-  width: 900px;
+  width: 600px;
   margin: 0 auto; }
   .habits .habit {
     -webkit-border-radius: 5px;
@@ -50,9 +84,9 @@
         font-family: 'Gill Sans', 'sans-serif';
         text-align: center;
         color: #bbb;
-        line-height: 110px;
-        height: 110px;
-        width: 110px;
+        line-height: 90px;
+        height: 90px;
+        width: 90px;
         float: left; }
         .habits .habit .calendar .day.completed {
           background-color: red; }

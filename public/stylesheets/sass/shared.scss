@@ -1,11 +1,31 @@
 @import 'mixins';
 
+body{
+	background: #ddd;
+}
+
+#wrap{
+	@include gradient-background(white, #ddd, white);
+}
+
+#header {
+	@include gradient-background(#bbb, white, #bbb);
+}
+
+#new_habit{
+	@include gradient-background(white, #C3DAAD, white);
+	@include rounded_corners(5px);
+	border: 1px solid #C3DAAD;
+	width: 560px;
+	margin: 20px auto;
+	padding: 20px;
+}
 
 .habits {
  @include gradient-background(white, #ddd, white);
  @include rounded_corners(5px);
  border: 1px solid #ddd;
- width: 900px;
+ width: 600px;
  margin: 0 auto;
  .habit{
    @include rounded_corners(5px);
@@ -24,9 +44,9 @@
        font-family: 'Gill Sans', 'sans-serif';
        text-align: center;
        color: #bbb;
-       line-height: 110px;
-       height: 110px;
-       width: 110px;
+       line-height: 90px;
+       height: 90px;
+       width: 90px;
        float: left;
        
        &.completed {

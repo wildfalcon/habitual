@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Habitual</title>
-  <%= stylesheet_link_tag ["reset.css", "defaults.css", "shared.css"] %>
+  <%= stylesheet_link_tag ["reset.css", "sticky_footer","defaults.css", "shared.css"] %>
   <%= javascript_include_tag ["lib/jquery-1.4.4.min", 
                               "lib/js-model-0.9.4.min", 
                               "lib/date",
@@ -14,34 +14,42 @@
 </head>
 <body>
 
-<div id="auth">
-  <% if user_logged_in? %>
-    Current User: <%= current_user.uid %>
-  <% else %>
-    <fb:login-button perms="email"></fb:login-button>
-  <% end %>
-</div>
+  <div id="wrap">
+  	
+  	<div id="header">
+  	  <div id="auth">
+        <% if user_logged_in? %>
+          Current User: <%= current_user.uid %>
+        <% else %>
+          <fb:login-button perms="email"></fb:login-button>
+        <% end %>
+      </div>
+      
+      <div id="flash">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+  	</div>
+  	
+  	<div id="main">
+  	  <div id="primary">
+        <%= yield %>
+  	  </div>
+      <div id="secondary">
+        <div id="mpu">
+          Hello
+        </div>
+      </div>
+  	</div>
+  	
+  </div>
 
-<div id="flash">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-</div>
+  <div id="footer">
+  </div>
 
-<%= yield %>
 
-<div id="fb-root"></div>
-<script src="http://connect.facebook.net/en_US/all.js"></script>
-<script>
-  FB.init({appId: '<%= ENV["FB_APP_ID"] %>', status: true, cookie: true, xfbml: true});
-  FB.Event.subscribe('auth.sessionChange', function(response) {
-    console.log("FB: ", response);
-    if (response.session) {
-      window.location.reload();
-    } else {
-      window.location.reload();
-    }
-  });
-</script>
+
+<%= render :partial => 'shared/facebook_jds_sdk' %>
 
 </body>
 </html>

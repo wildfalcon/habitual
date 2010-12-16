@@ -1,4 +1,7 @@
 class Habit < ActiveRecord::Base
+
+  belongs_to :user
+  
   before_create :set_start_date
   
   private
