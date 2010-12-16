@@ -5,12 +5,8 @@ gem 'mysql2'
 gem 'inherited_resources'
 gem 'haml'
 gem "json"
+gem 'hassle'
 
-group :production do
-  gem "memcache-client"
-  gem 'memcached-northscale', :require => 'memcached'
-  gem 'hassle', :git => "http://github.com/Papipo/hassle.git"
-end
 
 group :development, :test do
   gem 'rspec-rails'
