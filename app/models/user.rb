@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   
     after_create :pull_profile_from_facebook
 
+    def profile_url(size = "square")
+      "https://graph.facebook.com/#{uid}/picture?type=square"
+    end
+
     private
 
     def pull_profile_from_facebook

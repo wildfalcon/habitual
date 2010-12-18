@@ -27,6 +27,9 @@
   </script>
 <% end %>
 
+<div class="habits"></div>
+
+<% content_for :secondary do %>
 <div id="new_habit">
   
   <form action="#/habits", method="post">
@@ -38,6 +41,6 @@
     </fieldset>
   </form>
 </div>
-<div class="habits"></div>
 
+<% end %>
 

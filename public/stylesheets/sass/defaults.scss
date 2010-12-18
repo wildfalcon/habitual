@@ -4,7 +4,7 @@
 	
 	#header {
 		@incldue clearfix;
-		height: 100px;
+		height: 50px;
 		
 		#auth {
 			margin: 10px;
@@ -34,8 +34,5 @@
 }
 
 #footer {
-	width: 960px;
-	margin-left: auto;
-	margin-right: auto;
 	background: #bbb;
 }

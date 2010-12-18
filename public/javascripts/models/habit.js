@@ -18,7 +18,7 @@ var Habit = Model("habit", {
     }
     return days;
   },
-  completableDate: function(){
+  nextDate: function(){
     var cd;
     if(this.lastCompletedDate() == null){
       cd = this.startDate();
@@ -28,8 +28,15 @@ var Habit = Model("habit", {
     }
     return cd;
   },
+  completableDate: function(date){
+    console.log(date);
+    var next = date.equals(this.nextDate());
+    var notFuture = date.compareTo(Date.today()) < 1;
+    console.log(next, notFuture);
+    return (next && notFuture);
+  },
   completeDate: function(date){ 
-    if(date.equals(this.completableDate())){
+    if(this.completableDate(date)){
       this.attr("last_completed_date", date);
       this.save();
       return true;
