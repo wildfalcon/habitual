@@ -38,9 +38,10 @@
     var self = this;
     self.habit = habit;
     self.$elem = $("<div>").addClass("habit");
+
+    var $titleDiv = $('<div class="title">');
     
-    
-    $('<h2>').html(habit.attr("name")).appendTo(self.$elem);
+    $('<h2>').html(habit.attr("name")).appendTo($titleDiv);
     
     var $deleteForm = $("<form>").addClass("delete_form").append("<button>Delete</button>");
     $deleteForm.attr("action", "#/habits/"+habit.id());
@@ -54,7 +55,9 @@
       return false;
     });
     $deleteForm.prepend($('<input>').attr({type: 'hidden', name: '_method', value: 'delete'}));
-    $deleteForm.appendTo(self.$elem);
+    $deleteForm.appendTo($titleDiv);
+
+		$titleDiv.appendTo(self.$elem);
     
     self.habit.bind("remove", function(){
       self.$elem.fadeOut(600, function(){

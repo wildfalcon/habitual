@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Habitual</title>
-  <%= stylesheet_link_tag ["reset.css", "sticky_footer","defaults.css", "shared.css"] %>
+  <%= stylesheet_link_tag ["reset.css", "sticky_footer","defaults.css", "layout.css", "shared.css"] %>
   <%= javascript_include_tag ["lib/jquery-1.4.4.min", 
                               "lib/js-model-0.9.4.min", 
                               "lib/date",
@@ -29,12 +29,20 @@
   <div id="wrap">
   	
   	<div id="header">
+  	  <div id="masthead">
+        <div id="logo">Logo goes here</div>
+  	   <div id="banner-ad"></div>
+  	  </div>
+  	  
   	  <div id="auth">
         <% if user_logged_in? %>
           Current User: <%= current_user.uid %>
         <% else %>
           <fb:login-button perms="email"></fb:login-button>
         <% end %>
+      </div>
+      
+      <div id="nav">
       </div>
       
       <div id="flash">
@@ -60,15 +68,14 @@
         </div>
         <% end %>
         <%= yield :secondary %>
-        <div id="mpu">
-          Hello
-        </div>
+        <div id="mpu"></div>
       </div>
   	</div>
   	
   </div>
 
   <div id="footer">
+    This is some footer text
   </div>
 
 

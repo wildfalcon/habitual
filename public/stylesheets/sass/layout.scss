@@ -1,0 +1,72 @@
+@import 'mixins';
+
+#wrap {
+	width: 960px;
+	margin: 0 auto;
+	
+	#header {
+		@incldue clearfix;
+		margin-bottom: 20px;
+
+		#masthead{
+			@include clearfix;
+			height: 110px;
+			background: $light;
+			
+			#logo {
+				margin-top: 10px;
+				height: 90px;
+				width: 200px;
+				@include gradient_background($light, $medium, $light);
+				float: left;
+			}
+			
+			#banner-ad {
+				margin-top: 10px;
+				height: 90px;
+				width: 728px;
+				background: url("images/ads/banner.png");
+				float: right;
+			}
+		}
+		
+		#auth {
+			display: none;
+			margin: 10px;
+			width: 200px;
+			float: right;
+		}
+		
+		#nav {
+			@include rounded-corners(5px);
+			height: 20px;
+			background: $blue;
+		}
+	}
+	
+	#main {			
+		#primary{
+			float: left;
+			width: 640px;
+		}
+		#secondary{
+			float: right;
+			width: 320px;
+
+			#mpu {
+				margin: 10px auto 0 auto;
+				height: 250px;
+				width: 300px;
+				background: url("images/ads/mpu.jpg");
+			}
+		}
+	}
+}
+
+#footer{
+	font-size: small;
+	padding: 0 20px;
+	line-height: 30px;
+  background: $blue;
+	color: $light;
+}

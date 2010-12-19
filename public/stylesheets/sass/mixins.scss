@@ -1,3 +1,9 @@
+$red: #D93240;
+$light: #F2F2F2;
+$medium: #F2DEC4;
+$dark: #928F86;
+$blue: #303E4B;
+
 @mixin clearfix {
   // Taken from http://css-discuss.incutio.com/wiki/Clearing_Space (Option 2)
   &:after {

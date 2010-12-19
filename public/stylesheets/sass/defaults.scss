@@ -1,38 +1,7 @@
-#wrap {
-	width: 960px;
-	margin: 0 auto;
-	
-	#header {
-		@incldue clearfix;
-		height: 50px;
-		
-		#auth {
-			margin: 10px;
-			width: 200px;
-			float: right;
-		}
-	}
-	#main {
-		
-		
-		#primary{
-			float: left;
-			width: 640px;
-		}
-		#secondary{
-			float: right;
-			width: 320px;
+@import 'mixins';
 
-			#mpu {
-				margin: 10px auto 0 auto;
-				height: 250px;
-				width: 300px;
-				outline: 1px solid black;
-			}
-		}
-	}
-}
-
-#footer {
-	background: #bbb;
+body{
+	background: $light;
+	color: $blue;
+  font-family: "Helvetica-Light", "Helvetica Light", Helvetica, Arial, sans-serif;
 }

@@ -1,25 +1,13 @@
 @import 'mixins';
 
-body{
-	background: #ddd;
-  font-family: "Helvetica-Light", "Helvetica Light", Helvetica, Arial, sans-serif;
-}
 
-#wrap{
-	@include gradient-background(white, #ccc, white);
-}
 
-#header {
-	@include gradient-background(#bbb, white, #bbb);
-}
 
-#footer{
-  background: #690000;
-}
+
 #new_habit{
 	@include rounded_corners(5px);
-	background: white;
-	border: 1px solid #ddd;
+	@include gradient-background($light, $medium, $light);
+	border: 1px solid $medium;
 	width: 290px;
 	margin: 0 auto;
   padding: 5px;
@@ -28,7 +16,7 @@ body{
   form{
     text-align: center;
     legend{
-      font-weight: bold;
+/*      font-weight: bold;*/
       text-align: center;
       line-height: 2em;
       margin-bottom: 3px;
@@ -42,8 +30,8 @@ body{
 #profile {
   @include clearfix;
   @include rounded_corners(5px);
-  background: white;
-  border: 1px solid #ddd;
+	@include gradient-background($light, $medium, $light);
+  border: 1px solid $medium;
   width: 290px;
   margin: 0 auto;
   margin-bottom: 10px;
@@ -64,35 +52,51 @@ body{
 }
 
 .habits {
- @include gradient-background(white, #ddd, white);
- @include rounded_corners(5px);
- border: 1px solid #ddd;
- width: 600px;
- margin: 0 auto;
- .habit{
-   @include rounded_corners(5px);
-   margin: 10px;
-   padding: 10px;
-   border: 1px solid #bbb;
-    @include gradient-background(#ddd, #bbb, #ddd);
-   .calendar{
+  @include gradient-background($light, $medium, $light);
+  @include rounded_corners(5px);
+  border: 1px solid $medium;
+  width: 600px;
+  margin: 0 auto;
+  .habit{
+    @include rounded_corners(5px);
+  	margin: 10px;
+  	padding: 10px;
+  	border: 1px solid $dark;
+  	@include gradient-background($light, $dark, $medium);
+   	
+		.title{
+			@include clearfix;
+			h2 {
+				float: left;
+			}
+			form button{
+				background: pink;
+				height: 25px;
+				width: 25px;
+				float: right;
+			}
+		}
+
+
+		.calendar{
      @include clearfix;
      margin: 10px;
      .day{
        @include rounded_corners(3px);
-       border: 1px solid #bbb;
+       border: 1px solid $dark;
        margin: 3px;
-       background: white;
-       font-family: 'Gill Sans', 'sans-serif';
+       background: $medium;
        text-align: center;
-       color: #bbb;
+       color: $dark;
        line-height: 50px;
        height: 50px;
        width: 90px;
        float: left;
        
        &.completed {
-         background-color: #690000;
+				background-color: $red;
+				color: $light;
+				border: 1px solid $dark;
        } 
      }
    }
