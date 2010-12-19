@@ -1,0 +1,46 @@
+<% content_for :head do %>
+  <script type="text/javascript" charset="utf-8">
+
+  app = $.sammy(function(){
+    this.post('#/habits', function(){
+      var habit = new Habit({name: this.params.name});
+      habit.save();
+    });
+    
+    this.del("#/habits/:id", function(){
+      var habit = Habit.find(this.params['id']);
+      habit.destroy(function(success){
+        console.log("Hello", success, habit, Habit.all());
+        if (success){
+          habit.trigger("remove");
+        }
+      });
+    });
+  });
+  
+  $(function() {
+    $('.habits').habitList();
+    app.run();    
+    Habit.load();
+  });
+  
+  </script>
+<% end %>
+
+<div class="habits"></div>
+
+<% content_for :secondary do %>
+<div id="new_habit">
+  
+  <form action="#/habits", method="post">
+    <fieldset>
+      <legend>Create a new habit</legend>
+    <label id="name">Name</label>
+    <input type="textfield" name="name"></input>
+    <input type="submit"></input>
+    </fieldset>
+  </form>
+</div>
+
+<% end %>
+
