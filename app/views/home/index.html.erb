@@ -1,5 +1,7 @@
- <% if user_logged_in? %>
-    Current User: <%= current_user.uid %>
-  <% else %>
-    <fb:login-button perms="email"></fb:login-button>
-  <% end %>
+<div id="login">
+  <h2>Log in with your Facebook account</h2>
+  <div id="fb">
+    <fb:login-button perms="email"></fb:login-button>      
+  </div>
+</div>
+
