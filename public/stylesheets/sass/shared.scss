@@ -6,8 +6,8 @@
 
 #new_habit{
 	@include rounded_corners(5px);
-	@include gradient-background($light, $medium, $light);
-	border: 1px solid $medium;
+	@include gradient-background($light, $blue, $light);
+	border: 1px solid $blue;
 	width: 290px;
 	margin: 0 auto;
   padding: 5px;
@@ -70,7 +70,9 @@
 				float: left;
 			}
 			form button{
-				background: pink;
+				background: url("images/icons/red_cross_24x24.png");
+				border: none;
+				text-indent: -999em;
 				height: 25px;
 				width: 25px;
 				float: right;
