@@ -29,10 +29,8 @@ var Habit = Model("habit", {
     return cd;
   },
   completableDate: function(date){
-    console.log(date);
     var next = date.equals(this.nextDate());
     var notFuture = date.compareTo(Date.today()) < 1;
-    console.log(next, notFuture);
     return (next && notFuture);
   },
   completeDate: function(date){ 
@@ -41,7 +39,6 @@ var Habit = Model("habit", {
       this.save();
       return true;
     } else {
-      console.log("Day cannot be completed");
       return false;
     }
   }  
