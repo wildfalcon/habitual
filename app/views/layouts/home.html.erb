@@ -28,21 +28,12 @@
   <div id="wrap">
   	
   	<div id="header">
+      <div id="nav"></div>
   	  <div id="masthead">
-        <div id="logo">Logo goes here</div>
-  	   <div id="banner-ad"></div>
+        <div id="logo"></div>
   	  </div>
-  	  
-  	  <div id="auth">
-        <% if user_logged_in? %>
-          Current User: <%= current_user.uid %>
-        <% else %>
-          <fb:login-button perms="email"></fb:login-button>
-        <% end %>
-      </div>
       
-      <div id="nav">
-      </div>
+
       
       <div id="flash">
         <p class="notice"><%= notice %></p>
