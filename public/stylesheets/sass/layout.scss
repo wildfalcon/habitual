@@ -19,7 +19,7 @@ body{
 			
 			#logo {
 				margin-top: 22px;
-				height: 90px;
+				height: 70px;
 				width: 220px;
         background: url("/images/logo.png");
 				float: left;
@@ -34,14 +34,41 @@ body{
 			}
 		}
 		
-		#auth {
-			display: none;
-			margin: 10px;
-			width: 200px;
-			float: right;
+		#nav{
+			@include clearfix;
+			ul{
+				margin-left: 20px;
+/*				height: 25px;
+				line-height: 25px;
+*/				position: relative;
+				li{
+					@include rounded_top_corners(5px);
+					height: 20px;
+					line-height: 20px;
+					padding: 0 20px;
+					float: left;
+					margin-top: 5px;
+					
+					&.selected{
+						background: $blue;
+						color: $medium;
+						height: 25px;
+						line-height: 25px;
+						margin-top: 0;
+						&:hover{
+							background: $blue;
+							color: $medium;
+							};
+					}
+					
+					&:hover{
+						background: $dark;
+					}
+				}
+			}
 		}
 		
-		#nav {
+		#breadcrumbs {
 			@include rounded-corners(5px);
 			height: 20px;
 			background: $blue;
