@@ -1,0 +1,2 @@
+module CommonHabitsHelper
+end

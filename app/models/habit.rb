@@ -1,6 +1,7 @@
 class Habit < ActiveRecord::Base
 
   belongs_to :user
+  belongs_to :common_habit
   
   before_create :set_start_date
   

@@ -1,5 +1,8 @@
 Habitual::Application.routes.draw do
 
+  # resources :common_habits
+  resources :featured_habits
+
   resources :articles
 
   root :to => "home#index"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101220202516) do
+ActiveRecord::Schema.define(:version => 20101224102004) do
 
   create_table "articles", :force => true do |t|
     t.string   "author"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(:version => 20101220202516) do
     t.datetime "updated_at"
   end
 
+  create_table "common_habits", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "name",       :null => false
+    t.boolean  "featured"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "habits", :force => true do |t|
     t.string   "name"
     t.date     "start_date"
@@ -29,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20101220202516) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "common_habit_id"
   end
 
   create_table "users", :force => true do |t|

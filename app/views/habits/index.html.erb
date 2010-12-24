@@ -21,7 +21,11 @@
   $(function() {
     $('.habits').habitList();
     app.run();    
-    Habit.load();
+    Habit.load(function(){
+      if (Habit.all().length==0){
+        FeaturedHabit.load();
+      }
+    });
   });
   
   </script>

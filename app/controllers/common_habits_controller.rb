@@ -1,0 +1,2 @@
+class CommonHabitsController < ApplicationController
+end
