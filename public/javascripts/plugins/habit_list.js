@@ -114,7 +114,7 @@
 			// Create Markup
 			self.$elem = $('<div>').addClass("featured_habit");
 			$('<h3>').html(featured_habit.attr('title')).appendTo(self.$elem);
-			$('<div>').html('<p>Create a habit.</p> <p>Every day for 30 days: '+featured_habit.attr('name')+"</p>").appendTo(self.$elem);
+			$('<div>').html('<p>Every day for 30 days:</p><p> '+featured_habit.attr('name')+"</p>").appendTo(self.$elem);
 			
 			//Add behaviour
 			self.$elem.click(function(){
@@ -167,7 +167,8 @@
 				this.$blank_slate = $('<div>').addClass("blank_slate");
 				$('<h2>').html("Do something for 30 days, and it will become a habit.").appendTo(this.$blank_slate);
 				$('<p>').html("Do your chosen task every day. But be dilligent, if you miss a day, you have to restart from day 1!").appendTo(this.$blank_slate);
-				$('<p>').html("Pick something you want to try and make into a habit, then do it every day for 30 days. Alternativly, pick an idea from the selection below").appendTo(this.$blank_slate);
+				$('<p>').html("Pick something you want to try and make into a habit, then do it every day for 30 days. Or why not pick an idea from our popular habits?").appendTo(this.$blank_slate);
+				$('<h2>').html("Popular Habits").appendTo(this.$blank_slate);
 				this.$blank_slate.appendTo(this.$elem);
 			}
 			var $fh = new FeaturedHabitView(featured_habit, this.$blank_slate);
