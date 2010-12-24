@@ -101,4 +101,32 @@ body{
 	line-height: 30px;
   background: $blue;
 	color: $light;
+
+	a {
+		color: $light;
+	}
+	a:visited {
+		color: $light;
+	}
+	a:hover {
+		color: $medium;
+	}
+	
+	
+	#follow_me{
+		float: left;
+		a {
+			display: block;
+			background: url("images/icons/twitter.png");
+			text-indent: -999em;
+			margin-top: 2px;
+			height: 25px;
+			width: 25px;
+		}
+	}
+	
+	#wildfalcon_attribution{
+		float: right;
+		
+	}
 }

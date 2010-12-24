@@ -13,3 +13,16 @@ h2{
 p {
 	margin-bottom: 0.5em;
 }
+
+a {
+	color: $dark;
+	text-decoration: none;
+}
+
+a:visited{
+	color: $dark;
+}
+
+a:hover {
+	color: $blue;
+}
