@@ -6,10 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-c1 = CommonHabit.find_or_create_by_title("Give up smoking", :name => "Not Smoke")
-c1.featured = true
-c1.save!
+CommonHabit.find_or_create_by_title("Give up smoking", :name => "Don't Smoke", :featured => true)
+CommonHabit.find_or_create_by_title("Learn Guitar", :name  => "Play chords for 30 minutes", :featured => true)
+CommonHabit.find_or_create_by_title("Get Fit", :name  => "Do 15 minutes of cardio exercise", :featured => true)
+CommonHabit.find_or_create_by_title("Wake up early", :name  => "Get out of bed by 7am", :featured => true)
 
-c2 = CommonHabit.find_or_create_by_title("Learn Guitar", :name  => "Play chords for 30 minutes")
-c2.featured = true
-c2.save!
