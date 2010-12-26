@@ -3,11 +3,14 @@
   ////////////////////////////////////////////
   //An individual day within a habit calendar
   ///////////////////////////////////////////
-  var HabitDay = function($day, habit, date){
+  var HabitDay = function(habit, date){
     var self = this;
-    self.$day = $day;
     self.date = date;
     this.habit = habit;
+
+		//Create Markup
+		self.$day = $("<div>").addClass("day").html(date.getDate()+"/"+(date.getMonth()+1));
+
 
     if (this.habit.lastCompletedDate()){
       var beforeCompletedDate = this.habit.lastCompletedDate().compareTo(date)>0;
@@ -18,12 +21,14 @@
       }
     }
 
-    $day.click(function(){
+    self.$day.click(function(){
       if (self.markCompleted()){
         self.$day.addClass("completed");
       }
       return false;
     });
+
+		return self.$day;
   };
   HabitDay.prototype = {
     markCompleted: function(){
@@ -95,8 +100,7 @@
       var self = this;
       var cal = $('<div>').addClass("calendar");
       $.each(this.habit.allDays(), function(index, date){
-        var $day = $("<div>").addClass("day").html(date.getDate()+"/"+(date.getMonth()+1));
-        new HabitDay($day, self.habit, date);
+        var $day = new HabitDay(self.habit, date);
         $day.appendTo(cal);
       });
       return cal;
