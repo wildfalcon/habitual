@@ -11,20 +11,29 @@
 		//Create Markup
 		self.$day = $("<div>").addClass("day").html(date.getDate()+"/"+(date.getMonth()+1));
 
+		if (this.habit.completedDate(date)){
+			self.$day.addClass("completed");
+		};
 
-    if (this.habit.lastCompletedDate()){
-      var beforeCompletedDate = this.habit.lastCompletedDate().compareTo(date)>0;
-      var isCompletedDate = this.habit.lastCompletedDate().compareTo(date)==0;
+		if (this.habit.completableDate(date)){
+			self.$day.addClass("completable");
+		};
+    
+		//Set behaviours
+		self.habit.bind("update", function(){
+			console.log("I say, I do believe the habit was updated");
+			if (self.habit.completedDate(date)){
+        self.$day.removeClass("completable");
+				self.$day.addClass("completed");
+			};
 
-      if ( beforeCompletedDate || isCompletedDate ){
-        self.$day.addClass("completed");
-      }
-    }
+			if (selfho.habit.completableDate(date)){
+				self.$day.addClass("completable");
+			};
+		});
 
     self.$day.click(function(){
-      if (self.markCompleted()){
-        self.$day.addClass("completed");
-      }
+      self.markCompleted();
       return false;
     });
 

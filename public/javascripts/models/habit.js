@@ -33,10 +33,22 @@ var Habit = Model("habit", {
 		var notFuture = date.compareTo(Date.today()) < 1;
 		return (next && notFuture);
 	},
+	completedDate: function(date){
+		if (this.lastCompletedDate()){
+			var beforeCompletedDate = this.lastCompletedDate().compareTo(date)>0;
+			var isCompletedDate = this.lastCompletedDate().compareTo(date)==0;
+			return ( beforeCompletedDate || isCompletedDate )
+		}
+	},
 	completeDate: function(date){ 
+		var self = this;
 		if(this.completableDate(date)){
 			this.attr("last_completed_date", date);
-			this.save();
+			this.save(function(success){
+				if (success==true){
+					self.trigger("updated");
+				}
+			});
 			return true;
 		} else {
 			return false;
