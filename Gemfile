@@ -10,4 +10,5 @@ gem 'hassle', :git => "https://github.com/Papipo/hassle.git"
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
