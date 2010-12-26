@@ -7,7 +7,7 @@ class Habit < ActiveRecord::Base
   before_save :complete_if_done
 
   validate do
-    errors.add(:last_completed_date, "must be after start_date") unless last_completed_date.blank? || last_completed_date > start_date
+    errors.add(:last_completed_date, "must be after start_date") unless last_completed_date.blank? || last_completed_date >= start_date
     if last_completed_date.present? && (last_completed_date - 29.days) > start_date
       errors.add(:last_completed_date, "must be within 30 days of start date") 
     end

@@ -27,7 +27,7 @@
 				self.$day.addClass("completed");
 			};
 
-			if (selfho.habit.completableDate(date)){
+			if (self.habit.completableDate(date)){
 				self.$day.addClass("completable");
 			};
 		});
@@ -78,7 +78,13 @@
       self.$elem.fadeOut(600, function(){
         self.$elem.remove();
       });
-    })
+    });
+
+		self.habit.bind("updated", function(){
+			if (self.habit.completed()==true){
+				console.log("Take me out of the oven. I'm Done");
+			}
+		});
 
 		self.habit.bind("created_in_ui", function(){
 			self.showCalendar();

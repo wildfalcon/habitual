@@ -18,6 +18,11 @@ describe Habit do
       @habit.should_not be_valid
     end
     
+    it "should be valid if the start date" do
+      @habit.last_completed_date = @habit.start_date
+      @habit.should be_valid
+    end
+    
     it "should be invalid if more than 29 days after start date" do
       @habit.last_completed_date = Date.today + 30.days
       @habit.should_not be_valid
