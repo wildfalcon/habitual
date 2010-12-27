@@ -1,4 +1,4 @@
-class HabitsController < ApplicationController
+class CompletedHabitsController < ApplicationController
   before_filter :check_logged_in
 
   inherit_resources
@@ -11,7 +11,7 @@ class HabitsController < ApplicationController
   end
 
   def collection
-    @habits ||= current_user.habits.uncompleted
+    @completed_habits ||= current_user.habits.completed
   end
   
   def check_logged_in

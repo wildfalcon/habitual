@@ -21,7 +21,6 @@
     
 		//Set behaviours
 		self.habit.bind("update", function(){
-			console.log("I say, I do believe the habit was updated");
 			if (self.habit.completedDate(date)){
         self.$day.removeClass("completable");
 				self.$day.addClass("completed");
@@ -82,8 +81,11 @@
 
 		self.habit.bind("updated", function(){
 			if (self.habit.completed()==true){
-				console.log("Take me out of the oven. I'm Done");
-			}
+				CompletedHabit.add(self.habit);
+				self.$elem.fadeOut(900, function(){
+					self.$elem.remove();
+				});
+			};
 		});
 
 		self.habit.bind("created_in_ui", function(){
@@ -170,7 +172,6 @@
     });
 
 		FeaturedHabit.bind("add", function(featured_habit){
-			console.log("got event");
 			self.addFeaturedHabit(featured_habit);
 		})
     
@@ -182,7 +183,6 @@
     },
 		addFeaturedHabit: function(featured_habit){			
 			if (this.$blank_slate == null){
-				console.log("Creating blank slate");
 				this.$blank_slate = $('<div>').addClass("blank_slate");
 				$('<h2>').html("Do something for 30 days, and it will become a habit.").appendTo(this.$blank_slate);
 				$('<p>').html("Do your chosen task every day. But be dilligent, if you miss a day, you have to restart from day 1!").appendTo(this.$blank_slate);

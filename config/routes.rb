@@ -3,11 +3,12 @@ Habitual::Application.routes.draw do
   # resources :common_habits
   resources :featured_habits
 
-  resources :articles
+  # resources :articles
 
   root :to => "home#index"
 
   resources :habits
+  resources :completed_habits
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

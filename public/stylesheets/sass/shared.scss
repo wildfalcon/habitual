@@ -35,7 +35,7 @@
   width: 290px;
   margin: 0 auto;
   margin-bottom: 10px;
-  margin-top: 5px;
+/*  margin-top: 5px;*/
   padding: 5px;
   
   .photo {
@@ -49,6 +49,26 @@
     padding-top: 5px;
     line-height: 1.2em;
   }
+}
+
+#completed_habits{
+	@include clearfix;
+  @include rounded_corners(5px);
+	@include gradient-background($light, $medium, $light);
+  border: 1px solid $medium;
+  width: 290px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+	padding: 5px;
+	
+	.completed_habit {
+		  @include rounded_corners(5px);
+/*		@include gradient-background($light, $dark, $light);*/
+		background-color: $light;
+		border: 2px solid $dark;
+		margin-bottom: 5px;
+		padding: 5px;
+	}
 }
 
 .habits {

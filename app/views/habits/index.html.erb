@@ -20,12 +20,15 @@
   
   $(function() {
     $('.habits').habitList();
+    $('#completed_habits').completedHabits();
     app.run();    
     Habit.load(function(){
       if (Habit.all().length==0){
         FeaturedHabit.load();
       }
     });
+    
+    CompletedHabit.load();
   });
   
   </script>
@@ -46,5 +49,8 @@
   </form>
 </div>
 
+<div id="completed_habits">
+  <!-- Filled in by JS -->
+</div>
 <% end %>
 

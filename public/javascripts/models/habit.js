@@ -51,7 +51,6 @@ var Habit = Model("habit", {
 		var lcd = this.lastCompletedDate().clone();
 		var sd = this.startDate().clone();
 		var completed = (sd.add(29).days().compareTo(lcd) < 1);
-		console.log("comp", completed)
 		return completed;
 	},
 	completeDate: function(date){ 

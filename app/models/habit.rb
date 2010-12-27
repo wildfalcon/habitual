@@ -3,6 +3,9 @@ class Habit < ActiveRecord::Base
   belongs_to :user
   belongs_to :common_habit
 
+  scope :completed, where(:completed => true)
+  scope :uncompleted, where(:completed => false)
+
   before_create :set_start_date
   before_save :complete_if_done
 
