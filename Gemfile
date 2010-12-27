@@ -6,7 +6,7 @@ gem 'inherited_resources'
 gem 'haml'
 gem "json"
 gem 'hassle', :git => "https://github.com/Papipo/hassle.git"
-
+gem 'hoptoad_notifier'
 
 group :development, :test do
   gem 'rspec-rails'

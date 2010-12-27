@@ -47,6 +47,9 @@ GEM
       rails (>= 3.0.0.beta4)
     haml (3.0.24)
     has_scope (0.5.0)
+    hoptoad_notifier (2.3.12)
+      activesupport
+      builder
     i18n (0.4.2)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
@@ -102,6 +105,7 @@ DEPENDENCIES
   factory_girl_rails
   haml
   hassle!
+  hoptoad_notifier
   inherited_resources
   json
   mysql2
