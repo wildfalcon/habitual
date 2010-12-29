@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101226214541) do
+ActiveRecord::Schema.define(:version => 20101227130442) do
 
   create_table "articles", :force => true do |t|
     t.string   "author"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20101226214541) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "friend_ids"
   end
 
   add_index "users", ["uid"], :name => "index_users_on_uid", :unique => true

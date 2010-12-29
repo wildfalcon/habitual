@@ -16,11 +16,7 @@
   CompletedHabitList.prototype = {
 		addCompletedHabit: function(completed_habit){
 			var self = this;
-			if (self.$elem.find("#head").length==0) {
-				var $head = $('<div id="head">')
-				$("<h2>").html("Completed Habits").appendTo($head);
-				$head.appendTo(self.$elem);
-			}
+			
 			
 			//Factor this into own class if complexity grows
 			//create markup
