@@ -7,7 +7,7 @@ class FriendsHabitsController < ApplicationController
   
   protected
   def collection
-    @friends ||= current_user.friends_with_habits.map{|u| {"habit_name" => u.habits.first.name, "name"=>u.name, "image" => u.profile_url}}
+    @friends ||= current_user.friends_with_habits.map{|u| {"habit_name" => u.habits.uncompleted.first.name, "name"=>u.name, "image" => u.profile_url}}
   end
 
   def check_logged_in

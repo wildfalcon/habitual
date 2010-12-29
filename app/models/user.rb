@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
     end
     
     def friends_with_habits
-      friends.joins(:habits).group("users.uid, users.id").includes(:habits)
+      # A beer to anyone who can do this in SQL that works in both Mysql and Postgres
+      friends.includes(:habits).select{|u| u.habits.uncompleted.count > 0}
     end
 
 
