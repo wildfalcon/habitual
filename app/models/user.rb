@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     end
     
     def friends_with_habits
-      friends.joins(:habits).group("id").includes(:habits)
+      friends.joins(:habits).group("users.id").includes(:habits)
     end
 
     private
