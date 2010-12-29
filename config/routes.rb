@@ -9,6 +9,7 @@ Habitual::Application.routes.draw do
 
   resources :habits
   resources :completed_habits
+  resources :friends_habits
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

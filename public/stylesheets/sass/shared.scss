@@ -1,43 +1,36 @@
 @import 'mixins';
 
-
-
-
-
-#new_habit{
-	@include rounded_corners(5px);
-	@include gradient-background($light, $blue, $light);
-	border: 1px solid $blue;
-	width: 290px;
-	margin: 0 auto;
-  padding: 5px;
-  margin-bottom: 10px;
-  
-  form{
-    text-align: center;
-    legend{
-/*      font-weight: bold;*/
-      text-align: center;
-      line-height: 2em;
-      margin-bottom: 3px;
-    }
-    label{
-      display: none;
-    }
-  }
-}
-
-#profile {
-  @include clearfix;
+#secondary > div {
+	@include clearfix;
   @include rounded_corners(5px);
 	@include gradient-background($light, $medium, $light);
   border: 1px solid $medium;
   width: 290px;
   margin: 0 auto;
   margin-bottom: 10px;
-/*  margin-top: 5px;*/
   padding: 5px;
-  
+
+	&#new_habit{
+		@include gradient-background($light, $blue, $light);
+
+	  form{
+	    text-align: center;
+	    legend{
+	      text-align: center;
+	      line-height: 2em;
+	      margin-bottom: 3px;
+	    }
+	    label{
+	      display: none;
+	    }
+	  }
+	}
+	
+	
+}
+
+#profile {
+    
   .photo {
     height: 50px;
     width: 50px;
@@ -51,19 +44,24 @@
   }
 }
 
+#friends_habits{
+	.friends_habit{
+		@include clearfix;
+		img,div{
+			float:left;
+		}
+		
+		div{
+			margin-left: 5px;
+		}
+		
+	}
+}
+
 #completed_habits{
-	@include clearfix;
-  @include rounded_corners(5px);
-	@include gradient-background($light, $medium, $light);
-  border: 1px solid $medium;
-  width: 290px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-	padding: 5px;
-	
+		
 	.completed_habit {
 		  @include rounded_corners(5px);
-/*		@include gradient-background($light, $dark, $light);*/
 		background-color: $light;
 		border: 2px solid $dark;
 		margin-bottom: 5px;

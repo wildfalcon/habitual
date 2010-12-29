@@ -2,7 +2,7 @@ require 'net/https'
 
 class User < ActiveRecord::Base
   
-    has_many :habits
+    has_many :habits, :dependent => :destroy
   
     serialize :friend_ids, Array
   

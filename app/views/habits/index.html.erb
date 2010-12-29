@@ -10,7 +10,6 @@
     this.del("#/habits/:id", function(){
       var habit = Habit.find(this.params['id']);
       habit.destroy(function(success){
-        console.log("Hello", success, habit, Habit.all());
         if (success){
           habit.trigger("remove");
         }
@@ -21,6 +20,7 @@
   $(function() {
     $('.habits').habitList();
     $('#completed_habits').completedHabits();
+    $('#friends_habits').friendsHabitsList();
     app.run();    
     Habit.load(function(){
       if (Habit.all().length==0){
@@ -29,6 +29,7 @@
     });
     
     CompletedHabit.load();
+    FriendsHabit.load();
   });
   
   </script>
@@ -50,7 +51,18 @@
 </div>
 
 <div id="completed_habits">
+  <div class="head">
+    <h2>Completed Habits</h2>
+  </div>
   <!-- Filled in by JS -->
 </div>
+
+<div id="friends_habits">
+  <div class="head">
+    <h2>Your friend's habits</h2>
+  </div>
+  <!-- Filled in by JS -->
+</div>
+
 <% end %>
 
