@@ -123,7 +123,13 @@
 
 			var $reset = $("<div>").addClass("reset");
 			$("<p>").html("I missed a day. Restart from the beginning").appendTo($reset);
-			$reset.click(function(){self.habit.restart();return false;})
+			$reset.click(function(){
+				var confirmed = confirm("This will reset your habit to day 1. Click OK if you really did miss a day.");
+				if (confirmed){
+					self.habit.restart();
+				}
+				return false;
+				})
 			
 			$reset.appendTo($cal);
 			return $cal;
