@@ -1,9 +1,6 @@
 var Habit = Model("habit", {
 	persistence: Model.REST("/habits")
 }, {
-	startDate: function(){
-		return Date.parse(this.attr("start_date"));
-	},
 	lastCompletedDate: function(){
 		if (typeof(this.attr("last_completed_date")) == "string"){
 			return Date.parse(this.attr("last_completed_date"));
@@ -20,8 +17,10 @@ var Habit = Model("habit", {
 	},
 	allDays: function(){
 		var days = [];
+		var day = this.startDate().clone();
 		for(var i = 0; i<=29; i++){
-			days.push(this.startDate().addDays(i));
+			var nextDay = day.clone().addDays(i)
+			days.push(nextDay);
 		}
 		return days;
 	},
@@ -46,6 +45,16 @@ var Habit = Model("habit", {
 			var isCompletedDate = this.lastCompletedDate().compareTo(date)==0;
 			return ( beforeCompletedDate || isCompletedDate )
 		}
+	},
+	restart: function(){
+		this.attr("start_date", Date.today());
+		this.attr("last_completed_date", null)
+		this.save(function(success){
+			if(success){
+				this.trigger("restarted");
+			}
+		});
+		return false;
 	},
 	completed: function(){
 		var lcd = this.lastCompletedDate().clone();

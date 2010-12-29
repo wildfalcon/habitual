@@ -124,27 +124,46 @@
 		.calendar{
 			@include clearfix;
 			margin: 10px;
-			.day{
-				@include rounded_corners(3px);
-				border: 1px solid $dark;
-				margin: 3px;
+			
+			.reset {
 				background: $medium;
+				@include rounded_corners(5px);
 				text-align: center;
-				color: $dark;
-				line-height: 50px;
-				height: 50px;
-				width: 90px;
-				float: left;
-
-				&.completed {
-					background-color: $red;
-					color: $light;
-					border: 1px solid $dark;
-				} 
+				padding: 10px;
 				
-				&.completable {
-					background-color: green;
+				&:hover{
+					background: $red;
+					color: $light;
+				};
+			}
+			.days{
+				@include clearfix;
+				width: 490px;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				.day{
+					@include rounded_corners(3px);
+					border: 1px solid $dark;
+					margin: 3px;
+					background: $medium;
+					text-align: center;
+					color: $dark;
+					line-height: 50px;
+					height: 50px;
+					width: 90px;
+					float: left;
+
+					&.completed {
+						background-color: $red;
+						color: $light;
+						border: 1px solid $dark;
+					} 
+
+					&.completable {
+						background-color: green;
+					}
 				}
+				
 			}
 		}
 	} 

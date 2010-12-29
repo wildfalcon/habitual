@@ -35,7 +35,6 @@
       self.markCompleted();
       return false;
     });
-
 		return self.$day;
   };
   HabitDay.prototype = {
@@ -88,6 +87,10 @@
 			};
 		});
 
+		self.habit.bind("restarted", function(){
+			self.$elem.find(".days").replaceWith(self.createDays());
+		})
+
 		self.habit.bind("created_in_ui", function(){
 			self.showCalendar();
 		})
@@ -113,14 +116,26 @@
     hideAllCalendars: function(){
       $('.habit .calendar').slideUp();
     },
-    createCalendar: function(){
+		createCalendar: function(){
+			var self = this;
+			var $cal = $('<div>').addClass("calendar");
+			$cal.append(this.createDays());
+
+			var $reset = $("<div>").addClass("reset");
+			$("<p>").html("I missed a day. Restart from the beginning").appendTo($reset);
+			$reset.click(function(){self.habit.restart();return false;})
+			
+			$reset.appendTo($cal);
+			return $cal;
+		},
+    createDays: function(){
       var self = this;
-      var cal = $('<div>').addClass("calendar");
+			var $days = $('<div>').addClass("days");
       $.each(this.habit.allDays(), function(index, date){
         var $day = new HabitDay(self.habit, date);
-        $day.appendTo(cal);
+        $day.appendTo($days);
       });
-      return cal;
+      return $days;
     }
   };
 
