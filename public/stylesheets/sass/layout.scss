@@ -25,6 +25,24 @@ body{
 				float: left;
 			}
 			
+			#super_nav{
+				height: 90px;
+				margin-top: 10px;
+				float: right;
+				
+				ul{
+					li{
+						float: left;
+						list-style-type: none;
+						margin-right: 10px;
+						
+						form{
+							margin-top: -5px;
+						}
+					}
+				}
+			}
+			
 			#banner-ad {
 				margin-top: 10px;
 				height: 90px;
