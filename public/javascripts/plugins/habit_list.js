@@ -148,10 +148,9 @@
 	/////////////////////////////////////////
 	// A Featured Habit
 	/////////////////////////////////////////
-	var FeaturedHabitView = function(featured_habit, $blank_slate){
+	var FeaturedHabitView = function(featured_habit){
 			var self = this;
 			self.featured_habit = featured_habit;
-			self.$blank_slate = $blank_slate;
 			
 			// Create Markup
 			self.$elem = $('<div>').addClass("featured_habit");
@@ -160,8 +159,10 @@
 			
 			//Add behaviour
 			self.$elem.click(function(){
-				self.addAsHabit();
-				self.hideBlankSlate();
+				var confirmed = confirm("This will create a new habit and post to Facebook to say every day you will "+self.featured_habit.attr("name")+"\n Do you want to continue?");
+				if(confirmed){
+					self.addAsHabit();
+				}
 			});
 			return self.$elem;
 	};
@@ -175,9 +176,6 @@
 					habit.trigger("created_in_ui");
 				}
 			})
-		},
-		hideBlankSlate: function(){
-			this.$blank_slate.slideUp();
 		}
 	}
 
@@ -203,6 +201,7 @@
       this.$elem.append(cal);
     },
 		addFeaturedHabit: function(featured_habit){			
+			var self = this;
 			if (this.$blank_slate == null){
 				this.$blank_slate = $('<div>').addClass("blank_slate");
 				$('<h2>').html("Do something for 30 days, and it will become a habit.").appendTo(this.$blank_slate);
@@ -210,8 +209,12 @@
 				$('<p>').html("Pick something you want to try and make into a habit, then do it every day for 30 days. Or why not pick an idea from our popular habits?").appendTo(this.$blank_slate);
 				$('<h2>').html("Popular Habits").appendTo(this.$blank_slate);
 				this.$blank_slate.appendTo(this.$elem);
+				
+				Habit.bind("add", function(){
+					self.$blank_slate.slideUp();
+				})
 			}
-			var $fh = new FeaturedHabitView(featured_habit, this.$blank_slate);
+			var $fh = new FeaturedHabitView(featured_habit);
 			this.$blank_slate.append($fh);
 		}
   };
