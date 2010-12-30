@@ -9,21 +9,21 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= begin
-      puts "Hello, loading current user"
       return nil unless fb_info && fb_info['uid']
       user = User.find_by_uid(fb_info["uid"])
-      user = User.create!(fb_info.slice("uid", "access_token")) if user.nil?
+      if user.nil?
+        user = User.create!(fb_info.slice("uid", "access_token")) 
+        user.pull_profile_from_facebook
+        user.pull_friend_ids_from_facebook
+        user.save
+      end
       
-      puts user.access_token
-      puts fb_info["access_token"]
       
       unless user.access_token == fb_info["access_token"]
-        puts "Access token changed, refreshing from facebook"
         # access token has changed, time to refresh FB info
         user.access_token = fb_info["access_token"]
         user.pull_profile_from_facebook
         user.pull_friend_ids_from_facebook
-
         user.save
       else
         puts "Access token not changed"
