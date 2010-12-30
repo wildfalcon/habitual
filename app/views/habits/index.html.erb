@@ -39,13 +39,15 @@
 
 <% content_for :secondary do %>
 <div id="new_habit">
-  
+  <h3>Create a new habit</h3>
   <form action="#/habits", method="post">
     <fieldset>
-      <legend>Create a new habit</legend>
+      <legend></legend>
+      <p>Create a new habit, and post it to Facebook</p>
+      <p>Every day, for 30 days, I'm going to:</p>
     <label id="name">Name</label>
-    <input type="textfield" name="name"></input>
-    <input type="submit"></input>
+    <input type="textfield" name="name" class="text"></input><br/>
+    <button type="submit">Create and post to Facebook</input>
     </fieldset>
   </form>
 </div>
