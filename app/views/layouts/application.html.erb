@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Habitual</title>
+  <title><%= current_user.present? ? "Habits for #{current_user.name}: HabitualApp" : "HabitualApp: Making habits that stick" %></title>
   <%= stylesheet_link_tag ["reset.css", "sticky_footer","defaults.css", "layout.css", "shared.css", "pages.css"] %>
   <%= javascript_include_tag ["lib/jquery-1.4.4.min", 
                               "lib/js-model-0.9.4.min", 
