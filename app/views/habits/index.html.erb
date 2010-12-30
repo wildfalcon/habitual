@@ -3,8 +3,11 @@
 
   app = $.sammy(function(){
     this.post('#/habits', function(){
-      var habit = new Habit({name: this.params.name});
-      habit.save();
+      var confirmed = confirm("This will create a new habit and post to Facebook to say every day you will "+this.params.name+"\n Do you want to continue?");
+      if (confirmed){
+        var habit = new Habit({name: this.params.name});
+        habit.save();
+      }
     });
     
     this.del("#/habits/:id", function(){
