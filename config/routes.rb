@@ -11,6 +11,9 @@ Habitual::Application.routes.draw do
   resources :completed_habits
   resources :friends_habits
 
+  match '/tos' => 'Static#tos'
+  match '/privacy' => 'Static#privacy'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

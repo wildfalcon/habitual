@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HabitualApp: Making habits that stick</title>
+  <%= stylesheet_link_tag ["reset.css", "sticky_footer","defaults.css", "layout.css", "shared.css", "pages.css"] %>
+  <%= csrf_meta_tag %>
+  <%= yield :head %>
+  
+  <%= render :partial => "shared/google_analytics" %>
+</head>
+<body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
+  <div id="wrap">
+  	
+  	<div id="header">
+  	  <div id="masthead">
+        <div id="logo"></div>
+  	    <div id="super_nav">
+  	     <%= render :partial => "shared/super_nav" %>
+  	    </div>
+  	  </div>
+  	  
+  	  <div class="clearfix">
+  	   
+  	  </div>
+      
+      <div id="nav">
+        <ul>
+          <li><a href='/habits'>Habits</a></li>
+        </ul>
+      </div>
+      <div id="breadcrumbs">
+        
+      </div>
+      
+      <div id="flash">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+  	</div>
+  	
+  	<div id="main">
+  	  <div id="primary">
+        <%= yield %>
+  	  </div>
+      <div id="secondary">
+        <%= yield :secondary %>
+      </div>
+  	</div>
+  	
+  </div>
+
+  <div id="footer">
+    <%= render :partial => 'shared/footer_content' %>
+  </div>
+
+
+
+<%= render :partial => 'shared/facebook_jds_sdk' %>
+
+</body>
+</html>
