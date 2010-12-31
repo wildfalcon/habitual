@@ -41,6 +41,18 @@
 <div class="habits"></div>
 
 <% content_for :secondary do %>
+<% if user_logged_in? %>
+<div id="profile">
+  <div class="photo">
+    <%= image_tag current_user.profile_url("square") %>
+  </div>
+  <div class="details">
+    <%= current_user.name %> <%= link_to "(Logout)", "#/logout" %><br/>
+    Currently developing <%= pluralize(current_user.habits.uncompleted.count, "habit") %>
+  </div>
+</div>
+<% end %>
+
 <div id="new_habit">
   <h3>Create a new habit</h3>
   <form action="#/habits", method="post">
