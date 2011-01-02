@@ -13,6 +13,8 @@ Habitual::Application.routes.draw do
 
   match '/tos' => 'Static#tos'
   match '/privacy' => 'Static#privacy'
+  match '/about' => 'Static#about'
+  match '/donate' => 'Static#donate'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
