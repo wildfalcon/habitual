@@ -113,6 +113,7 @@
   	margin: 10px;
   	padding: 10px;
   	border: 1px solid $dark;
+		cursor: pointer;
   	@include gradient-background($light, $dark, $medium);
    	
 		.title{
