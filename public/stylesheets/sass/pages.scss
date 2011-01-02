@@ -21,6 +21,22 @@ body#home.index{
   background: $dark;
 
   #header{
+		background: $medium;
+			
+		#super_nav{
+			@include clearfix;
+			width: 135px;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 1.2em;
+			ul{
+				li{
+					list-style-type: none;
+					float: left;
+					margin-right: 10px;
+				}
+			}
+		}
 
     #nav{
       @include rounded_corners(0);
@@ -28,7 +44,7 @@ body#home.index{
     }
 
     #masthead{
-      padding-top:20px;
+      padding-top:20px;			
 			background: $medium;
       #logo{
         margin: 0 auto;
@@ -36,6 +52,12 @@ body#home.index{
       }
     }
   }
+
+	#footer{
+		#footer_links{
+			line-height: 30px;
+		}
+	}
 
 	#row1{
 		height: 120px;
