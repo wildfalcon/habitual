@@ -57,12 +57,15 @@
 #friends_habits{
 	.friends_habit{
 		@include clearfix;
-		img,div{
-			float:left;
+		margin-bottom: 3px;
+		img{
+      float:left;
 		}
 		
 		div{
 			margin-left: 5px;
+			float:left;
+      width: 235px;
 		}
 		
 	}

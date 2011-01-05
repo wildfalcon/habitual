@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
 
           res = http_session.start {|http| http.request(request) }
           puts res.body
+        elsif Rails.env == "test"
         else
           puts "Would have posted '#{message}' to facebook if I was running in production"
         end

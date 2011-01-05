@@ -1,4 +1,5 @@
 class Habit < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper #to get pluralize
 
   belongs_to :user
   belongs_to :common_habit
@@ -7,14 +8,20 @@ class Habit < ActiveRecord::Base
   scope :uncompleted, where(:completed => false)
 
   before_create :set_start_date
-  before_save :post_start_to_facebook
   before_save :complete_if_done
+  before_save :post_to_facebook
+
 
   validate do
     errors.add(:last_completed_date, "must be after start_date") unless last_completed_date.blank? || last_completed_date >= start_date
     if last_completed_date.present? && (last_completed_date - 29.days) > start_date
       errors.add(:last_completed_date, "must be within 30 days of start date") 
     end
+  end
+
+  def number_of_completed_days
+    return 0 if last_completed_date.blank?
+    (last_completed_date - start_date).to_i + 1
   end
 
   private
@@ -25,14 +32,27 @@ class Habit < ActiveRecord::Base
     end
   end
 
+  def post_to_facebook
+    post_start_to_facebook if new_record?
+    post_progress_to_facebook if last_completed_date_changed?
+  end
+
   def post_start_to_facebook
     if new_record? and user.present?
       user.post_to_facebook("Started a new habit\n#{name}")
     end
   end
+  
+  def post_progress_to_facebook
+    if [5,10,20].include? number_of_completed_days
+      if user.present? 
+        user.post_to_facebook("Managed to #{name}\nFor #{pluralize(number_of_completed_days, "day")} in a row")
+      end
+    end
+  end
 
   def complete_if_done
-    if last_completed_date.present? && (last_completed_date - 28.days) > start_date
+    if number_of_completed_days == 30
       self.completed =  true
       if user.present?
         user.post_to_facebook("Succesfully managed to: #{name}\n for 30 days in a row")

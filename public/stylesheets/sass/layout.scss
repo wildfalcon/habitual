@@ -12,20 +12,16 @@ body{
 		@incldue clearfix;
 		margin-bottom: 20px;
 
-		#masthead{
-			@include clearfix;
-			height: 110px;
-			background: $light;
-			
-			#logo {
-				margin-top: 22px;
-				height: 70px;
-				width: 220px;
-        background: url("/images/logo.png");
-				float: left;
-			}
-			
-			#super_nav{
+    #top{
+      @incldue clearfix;
+      height: 25px;
+      
+      #fb_like{
+        float: left;
+        height: 23px;
+        padding-left: 3px;
+      }
+      #super_nav{
 				height: 90px;
 				margin-top: 10px;
 				float: right;
@@ -43,6 +39,20 @@ body{
 					}
 				}
 			}
+    }
+
+		#masthead{
+			@include clearfix;
+			height: 70px;
+			background: $light;
+			
+			#logo {
+				height: 70px;
+				width: 220px;
+        background: url("/images/logo.png");
+				float: left;
+			}
+			
 			
 		}
 		
@@ -139,7 +149,7 @@ body{
 	#footer_links{
 		float: left;
 		margin-left: 50px;
-		line-height: 10px;
+		line-height: 30px;
 		
 		ul{
 			li{
