@@ -9,12 +9,13 @@ body#static {
 		padding-left: 10px;
 	}
 
-	ul{
-		margin: 10px 0;
+/*	ul{
+		margin: 0 0;
+		@include clearfix;
 		li{
 			margin-left: 35px;
 		}
-	}
+	}*/
 }
 
 body#home.index{
@@ -118,10 +119,23 @@ body#home.index{
 			h3, p{
 				margin: 20px;
 			}
-		}
-		
-		
+		}		
 	}
+
+	#row3{
+		height: 300px;
+		background: $medium;
+		@include clearfix;
+		padding-top: 15px;
+
+		fieldset{
+			float: left; /* Needed to make mailchimp form behave */
+			width: 455px;
+			margin: 0 auto;
+		}
+	}
+
+
 
 	#login {
 		width: 300px;
