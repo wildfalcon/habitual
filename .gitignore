@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 config/initializers/aaa_development.rb
 public/stylesheets/*.css
+defunkt-facebox
