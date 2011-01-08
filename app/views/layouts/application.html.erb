@@ -32,6 +32,10 @@
   <%= render :partial => "shared/google_analytics" %>
 </head>
 <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
+  
+  <%= render :partial => 'layouts/clicktale_top' %>
+
+  
   <div id="wrap">
   	
   	<%= render :partial => 'layouts/header' %>
@@ -55,6 +59,7 @@
 
 
 <%= render :partial => 'shared/facebook_jds_sdk' %>
+<%= render :partial => 'layouts/clicktale_bottom' %>
 
 </body>
 </html>
