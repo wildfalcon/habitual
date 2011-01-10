@@ -1,42 +1,30 @@
 <div id="row1">
   <div class="left_column">
-    <h1>Set yourself a 30 day challenge</h1>
-    <ol>
-      <li>Do something every day.</li> 
-      <li>If you miss a day, restart from day 1</li>
-      <li>After 30 days, it will be a habit</li>
-    </ol>
-   
+    <div id="login">
+      <h2>Log in with your Facebook account</h2>
+      <div id="fb">
+        <fb:login-button perms="email,publish_stream"></fb:login-button>
+      </div>
+    </div>
   </div>
 
   <div class="right_column">
-     <div id="login">
-        <h2>Log in with your Facebook account</h2>
-        <div id="fb">
-          <fb:login-button perms="email,publish_stream"></fb:login-button>
-        </div>
-      </div>
+    <%= render :partial => "shared/mailchimp_form" %>
   </div>
 </div>
 
 
 <div id="row2">
   <div class="col1">
-    <h3>30 Day progress tracker</h3>
-    <img src="/images/screenshots/calendar.png"></img>
-
+    <h3>Set yourself a 30 day challenge</h3>
+    <ol>
+      <li>Do something every day.</li> 
+      <li>If you miss a day, restart from day 1</li>
+      <li>After 30 days, it will be a habit</li>
+    </ol>
   </div>
   <div class="col2">
-    <h3>Succeed with your new years resolutions</h3>
-    <p>Track it day by day untill it becomes a habit, and part of your life.</p>
-    
-    <h3>Support from your friends</h3>
-    <p>Post your new habits to Facebook so your friends can support you</p>
-    
+    <h3>30 Day progress tracker</h3>
+    <img src="/images/screenshots/calendar.png"></img>
   </div>
-  
-</div>
-
-<div id="row3">
-  <%= render :partial => "shared/mailchimp_form" %>
 </div>
