@@ -1,0 +1,13 @@
+{
+  "name": "HabitualApp",
+  "version": "0.1",
+  "description": "Making Habits that Stick",
+  "app": {
+    "launch": {
+      "local_path": "main.html"
+    }
+  },
+  "permissions": [
+    "http://api.flickr.com/"
+  ]
+}

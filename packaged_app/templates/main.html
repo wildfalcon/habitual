@@ -1,0 +1,129 @@
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>HabitualApp: Making habits that stick</title> 
+  <link href="/stylesheets/reset.css" media="screen" rel="stylesheet" type="text/css" /> 
+  <link href="/stylesheets/sticky_footer.css" media="screen" rel="stylesheet" type="text/css" /> 
+  <link href="/stylesheets/defaults.css" media="screen" rel="stylesheet" type="text/css" /> 
+  <link href="/stylesheets/layout.css" media="screen" rel="stylesheet" type="text/css" /> 
+  <link href="/stylesheets/shared.css" media="screen" rel="stylesheet" type="text/css" /> 
+  <link href="/stylesheets/pages.css" media="screen" rel="stylesheet" type="text/css" /> 
+  <link rel="shortcut icon" href="/favicon.ico"> 
+  #scripts
+  
+  <script type="text/javascript" charset="utf-8">
+
+   app = $.sammy(function(){
+     this.post('#/habits', function(){
+       var confirmed = confirm("This will create a new habit and post to Facebook to say every day you will "+this.params.name+"\n Do you want to continue?");
+       if (confirmed){
+         var habit = new Habit({name: this.params.name});
+         habit.save();
+       }
+     });
+
+     this.del("#/habits/:id", function(){
+       var habit = Habit.find(this.params['id']);
+       habit.destroy(function(success){
+         if (success){
+           habit.trigger("remove");
+         }
+       });
+     });
+   });
+
+   $(function() {
+     $('.habits').habitList();
+     $('#completed_habits').completedHabits();
+     $('#friends_habits').friendsHabitsList();
+     app.run();    
+     Habit.load(function(){
+       if (Habit.all().length==0){
+         FeaturedHabit.load();
+       }
+     });
+
+     CompletedHabit.load();
+   });
+
+   </script>
+  
+  
+</head> 
+<body id="habits" action="index"> 
+  <div id="wrap">   	
+    <div id="header"> 
+
+      <div id="masthead"> 
+        <div id="logo"></div> 
+      </div> 
+
+      <div class="clearfix"></div> 
+
+      <div id="nav"> 
+        <ul> 
+          <li class=""><a href="/habits">Habits</a></li> 
+          <li class=""><a href="/about">About</a></li> 
+          <li  class="selected"><a href="/donate">Donate</a></li> 
+        </ul> 
+      </div> 
+      <div id="breadcrumbs"> 
+
+      </div> 
+
+      <div id="flash"> 
+        <p class="notice"></p> 
+        <p class="alert"></p> 
+      </div> 
+    </div> 
+    
+  	<div id="main"> 
+  	  <div id="primary"> 
+        <div class="habits"></div>
+  	  </div> 
+      <div id="secondary">
+        <div id="new_habit">
+          <h3>Create a new habit</h3>
+          <form action="#/habits", method="post">
+            <fieldset>
+              <legend></legend>
+              <p>Create a new habit.</p>
+              <p>Every day, for 30 days, I'm going to:</p>
+            <label id="name">Name</label>
+            <input type="textfield" name="name" class="text"></input><br/>
+            <button type="submit">Create and post to Facebook</input>
+            </fieldset>
+          </form>
+        </div>
+
+        <div id="completed_habits">
+          <div class="head">
+            <h2>Completed Habits</h2>
+          </div>
+          <!-- Filled in by JS -->
+        </div>
+             
+      </div> 
+  	</div> 
+  </div> 
+
+  <div id="footer"> 
+    <div id="follow_me"> 
+      <a href="http://www.twitter.com/habitualapp">Follow me on twitter</a> 
+    </div> 
+
+    <div id="footer_links"> 
+      <ul> 
+        <li><a href="mailto:laurie@habitualapp.com">Feedback</a></li> 
+        <li><a href="/privacy">Privacy</a></li> 
+        <li><a href="/tos">Terms of Service </a></li> 
+      </ul> 
+    </div> 
+
+    <div id="wildfalcon_attribution"> 
+      Made by <a href="http://www.wildfalcon.com" class="wildfalcon">Wildfalcon</a> 
+    </div> 
+  </div> 
+</body> 
+</html>
