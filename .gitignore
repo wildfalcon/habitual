@@ -5,3 +5,7 @@ tmp/**/*
 config/initializers/aaa_development.rb
 public/stylesheets/*.css
 defunkt-facebox
+packaged_app/main.html
+packaged_app/stylesheets
+packaged_app/javascripts
+.sass-cache
