@@ -11,10 +11,10 @@ Habitual::Application.routes.draw do
   resources :completed_habits
   resources :friends_habits
 
-  match '/tos' => 'Static#tos'
-  match '/privacy' => 'Static#privacy'
-  match '/about' => 'Static#about'
-  match '/donate' => 'Static#donate'
+  match '/tos' => 'static#tos'
+  match '/privacy' => 'static#privacy'
+  match '/about' => 'static#about'
+  match '/donate' => 'static#donate'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
