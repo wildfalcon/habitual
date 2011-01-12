@@ -3,15 +3,14 @@ namespace :packaged_app do
 
     desc "Build the app from shared source code"
     task :build do
-      FileUtils.rm_rf "packaged_app/javascripts"
-      FileUtils.rm_rf "packaged_app/stylesheets"
+      FileUtils.rm_rf "packaged_app/dist/"
       
       html = ""
       
       Dir.glob("public/javascripts/**/*").each do |filename|
         unless  File.directory?(filename)
           src = filename
-          dest = filename.gsub("public", "packaged_app")
+          dest = filename.gsub("public", "packaged_app/dist")
           puts "#{src} -> #{dest}"
           FileUtils.mkdir_p(File.dirname(dest))
           FileUtils.cp(src, dest)
@@ -19,7 +18,7 @@ namespace :packaged_app do
         end
       end
       
-      Dir.glob("packaged_app/javascripts/models/*").each do |filename|
+      Dir.glob("packaged_app/dist/javascripts/models/*").each do |filename|
         puts "Changing storage adaptor used in #{filename}"
         file = File.open(filename, "r")
         content = file.read
@@ -31,23 +30,36 @@ namespace :packaged_app do
         file.close
       end
       
-      system "sass --update public/stylesheets/sass:packaged_app/stylesheets"
+      system "sass --update public/stylesheets/sass:packaged_app/dist/stylesheets"
       
       Dir.glob("public/stylesheets/images/**/*").each do |filename|
         unless  File.directory?(filename)
           src = filename
-          dest = filename.gsub("public", "packaged_app")
+          dest = filename.gsub("public", "packaged_app/dist")
+          puts "#{src} -> #{dest}"
+          FileUtils.mkdir_p(File.dirname(dest))
+          FileUtils.cp(src, dest)
+        end
+      end
+
+      Dir.glob("packaged_app/public/**/*").each do |filename|
+        unless  File.directory?(filename)
+          src = filename
+          dest = filename.gsub("packaged_app/public", "packaged_app/dist")
           puts "#{src} -> #{dest}"
           FileUtils.mkdir_p(File.dirname(dest))
           FileUtils.cp(src, dest)
         end
       end
       
+      file = File.open("packaged_app/dist/main.html", "r")
+      html = file.read
+      file.close
       
-      main_html = File.open("packaged_app/templates/main.html", "r").read
-      main_html.gsub!("#scripts", html)
-      main_file = File.open("packaged_app/main.html", "w")
-      main_file.write main_html
-      main_file.close
+      html.gsub!("#scripts", html)
+      
+      file = File.open("packaged_app/dist/main.html", "w")
+      file.write html
+      file.close
     end
 end

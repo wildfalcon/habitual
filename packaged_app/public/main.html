@@ -16,15 +16,12 @@
 
    app = $.sammy(function(){
      this.post('#/habits', function(){
-       var confirmed = confirm("This will create a new habit and post to Facebook to say every day you will "+this.params.name+"\n Do you want to continue?");
-       if (confirmed){
-         var habit = new Habit({name: this.params.name});
-         habit.save();
-       }
+       var habit = new Habit({name: this.params.name});
+       habit.save();
      });
 
      this.del("#/habits/:id", function(){
-       var habit = Habit.find(this.params['id']);
+       var habit = Habit.find(this.params['uid']);
        habit.destroy(function(success){
          if (success){
            habit.trigger("remove");
@@ -33,7 +30,11 @@
      });
    });
 
+   online = false;
+
    $(function() {
+     
+     
      $('.habits').habitList();
      $('#completed_habits').completedHabits();
      $('#friends_habits').friendsHabitsList();
@@ -63,9 +64,7 @@
 
       <div id="nav"> 
         <ul> 
-          <li class=""><a href="/habits">Habits</a></li> 
-          <li class=""><a href="/about">About</a></li> 
-          <li  class="selected"><a href="/donate">Donate</a></li> 
+          <li class="selected"><a href="/habits">Habits</a></li> 
         </ul> 
       </div> 
       <div id="breadcrumbs"> 
@@ -116,8 +115,8 @@
     <div id="footer_links"> 
       <ul> 
         <li><a href="mailto:laurie@habitualapp.com">Feedback</a></li> 
-        <li><a href="/privacy">Privacy</a></li> 
-        <li><a href="/tos">Terms of Service </a></li> 
+        <li><a href="http://habitualapp.com/privacy" target="_blank">Privacy</a></li> 
+        <li><a href="http://habitualapp.com/tos"target="_blank">Terms of Service </a></li> 
       </ul> 
     </div> 
 
