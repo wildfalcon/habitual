@@ -11,7 +11,7 @@
     });
     
     this.del("#/habits/:id", function(){
-      var habit = Habit.find(this.params['id']);
+      var habit = Habit.find(this.params['uid']);
       habit.destroy(function(success){
         if (success){
           habit.trigger("remove");
@@ -19,6 +19,8 @@
       });
     });
   });
+  
+  online = true
   
   $(function() {
     $('.habits').habitList();

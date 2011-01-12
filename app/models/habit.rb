@@ -35,6 +35,7 @@ class Habit < ActiveRecord::Base
   def post_to_facebook
     post_start_to_facebook if new_record?
     post_progress_to_facebook if last_completed_date_changed?
+    post_completion_to_facebook if last_completed_date_changed?
   end
 
   def post_start_to_facebook
@@ -50,13 +51,16 @@ class Habit < ActiveRecord::Base
       end
     end
   end
+  
+  def post_completion_to_facebook
+    if (number_of_completed_days == 30) and user.present?
+      user.post_to_facebook("Succesfully formed a habit: #{name}\n by doing it every day for 30 days in a row")
+    end
+  end
 
   def complete_if_done
-    if number_of_completed_days == 30
+    if number_of_completed_days > 29
       self.completed =  true
-      if user.present?
-        user.post_to_facebook("Succesfully managed to: #{name}\n for 30 days in a row")
-      end
     end
   end
 
