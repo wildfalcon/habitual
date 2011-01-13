@@ -1,0 +1,8 @@
+(Test if people will pay)      Launch Chrome App (no facebook connection at all)
+(Create a source of new users) Put up some pages to grab organic traffic
+(To check engagement)          last logged in at count
+(To improve experience)        progress indicators when ajax saving
+(Remove initial friction)      Option to not post habits on facebook
+(To improve experience)        progress bar on friends habits
+(To increase length of visit)  habit page, with facebook like and comments
+
