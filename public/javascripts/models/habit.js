@@ -1,19 +1,31 @@
 var Habit = Model("habit", {
 	persistence: Model.REST("/habits")
 }, {
-	lastCompletedDate: function(){
-		if (typeof(this.attr("last_completed_date")) == "string"){
-			return Date.parse(this.attr("last_completed_date"));
-		} else {
-			return this.attr("last_completed_date");
+  initialize: function() {
+    
+    // Give it a uid
+    if(this.attr("uid") == null){
+      this.attr('uid', Math.uuid(8, 36).toLowerCase());
+      this.attr("start_date", Date.today());
+    } 
+
+  },
+  parseDateFromAttribute: function(attr_name){
+    if (typeof(this.attr(attr_name)) == "string"){
+		  var parsed_date = Date.parse(this.attr(attr_name));
+		  if (parsed_date == null) { // happens if we are reading from local storage
+		    parsed_date = Date.parse(this.attr(attr_name).match(/(.*)T/)[1]);
+		  }
+		  return parsed_date;
+	  } else {
+			return this.attr(attr_name);
 		}
+  },
+  lastCompletedDate: function(){
+    return this.parseDateFromAttribute("last_completed_date");
 	},
 	startDate: function(){
-		if (typeof(this.attr("start_date")) == "string"){
-			return Date.parse(this.attr("start_date"));
-		} else {
-			return this.attr("start_date");
-		}
+    return this.parseDateFromAttribute("start_date");
 	},
 	allDays: function(){
 		var days = [];

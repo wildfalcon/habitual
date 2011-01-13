@@ -20,7 +20,7 @@
 		};
     
 		//Set behaviours
-		self.habit.bind("update", function(){
+		self.habit.bind("updated", function(){
 			if (self.habit.completedDate(date)){
         self.$day.removeClass("completable");
 				self.$day.addClass("completed");
@@ -56,7 +56,7 @@
     $('<h2>').html(habit.attr("name")).appendTo($titleDiv);
     
     var $deleteForm = $("<form>").addClass("delete_form").append("<button>Delete</button>");
-    $deleteForm.attr("action", "#/habits/"+habit.id());
+    $deleteForm.attr("action", "#/habits/"+habit.attr("uid"));
       
     $deleteForm.find('button').bind("click", function(evt){
       var confirmed = confirm("Are you sure you wish to delete?");
