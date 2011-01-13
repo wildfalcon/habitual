@@ -1,0 +1,36 @@
+<html>
+<head>
+  <script src="/javascripts/lib/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="chrome_ex_oauthsimple.js"></script>
+  <script type="text/javascript" src="chrome_ex_oauth.js"></script>
+  
+  <script type="text/javascript" charset="utf-8">
+  
+   $(function() {
+     var oauth = ChromeExOAuth.initBackgroundPage({
+       'request_url': 'https://www.google.com/accounts/OAuthGetRequestToken',
+       'authorize_url': 'https://www.google.com/accounts/OAuthAuthorizeToken',
+       'access_url': 'https://www.google.com/accounts/OAuthGetAccessToken',
+       'consumer_key': 'anonymous',
+       'consumer_secret': 'anonymous',
+       'scope': 'https://docs.google.com/feeds/',
+       'app_name': 'My Google Docs Extension'
+     });  
+     
+      oauth.authorize(function(text1, text2){
+        console.log("Hello", text1, text2);
+        var url = 'https://www.google.com/accounts/o8/id'
+        
+        oauth.sendSignedRequest(url, function(text){
+          console.log("Hello again, i was told:", text);
+        })
+      });
+
+      
+     
+   });
+  </script>
+</head>
+<body>
+</body>
+</html>

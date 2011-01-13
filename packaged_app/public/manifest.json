@@ -11,7 +11,13 @@
     "16": "icon_16.png",
     "128": "icon_128.png"
   },
+  "background_page": "background.html",
   "permissions": [
-    "http://api.flickr.com/"
-  ]
+      "tabs",
+      "http://www.google.com/m8/feeds/*",
+      "https://www.google.com/accounts/OAuthGetRequestToken",
+      "https://www.google.com/accounts/OAuthAuthorizeToken",
+      "https://www.google.com/accounts/OAuthGetAccessToken",
+      "https://www.google.com/accounts/o8/id"
+    ]
 }

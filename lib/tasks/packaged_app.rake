@@ -5,7 +5,7 @@ namespace :packaged_app do
     task :build do
       FileUtils.rm_rf "packaged_app/dist/"
       
-      html = ""
+      script_html = ""
       
       Dir.glob("public/javascripts/**/*").each do |filename|
         unless  File.directory?(filename)
@@ -14,7 +14,7 @@ namespace :packaged_app do
           puts "#{src} -> #{dest}"
           FileUtils.mkdir_p(File.dirname(dest))
           FileUtils.cp(src, dest)
-          html << %Q(<script src="#{dest.gsub("packaged_app/", "")}"></script>\n)
+          script_html << %Q(<script src="#{dest.gsub("packaged_app/dist", "")}"></script>\n)
         end
       end
       
@@ -56,7 +56,7 @@ namespace :packaged_app do
       html = file.read
       file.close
       
-      html.gsub!("#scripts", html)
+      html.gsub!("#scripts", script_html)
       
       file = File.open("packaged_app/dist/main.html", "w")
       file.write html
