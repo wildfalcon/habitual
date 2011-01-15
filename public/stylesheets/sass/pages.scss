@@ -148,11 +148,11 @@ body#landing_pages.break_bad_habits{
 	#wrap{
 		background: $medium;
 	}
+
 	#header,#masthead,.row1,.row2{
 		background: $light;
 	}
-	
-	
+		
 	#header {
 		margin-bottom: 0;
 		padding-bottom: 5px;
@@ -163,7 +163,7 @@ body#landing_pages.break_bad_habits{
 	
 	h1{
 		margin-bottom: 0;
-		padding-bottom: 0.5em;
+		padding-bottom: 0.1em;
 	}
 	
   #carousel{
@@ -201,4 +201,20 @@ body#landing_pages.break_bad_habits{
 			}
 		}
 	}
+
+	.row3{
+		.left{
+			width: 25%;
+		}
+		.right{
+			width: 71%;
+			float: left;
+			
+			img{
+				height: 137px;
+				margin-right: 5px;
+			}
+		}
+	}
+
 }
