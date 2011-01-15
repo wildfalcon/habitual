@@ -8,14 +8,6 @@ body#static {
 	#primary{
 		padding-left: 10px;
 	}
-
-/*	ul{
-		margin: 0 0;
-		@include clearfix;
-		li{
-			margin-left: 35px;
-		}
-	}*/
 }
 
 body#home.index{
@@ -147,6 +139,66 @@ body#home.index{
     
 		h2{
 			margin-bottom: 10px;
+		}
+	}
+}
+
+body#landing_pages.break_bad_habits{
+
+	#wrap{
+		background: $medium;
+	}
+	#header,#masthead,.row1,.row2{
+		background: $light;
+	}
+	
+	
+	#header {
+		margin-bottom: 0;
+		padding-bottom: 5px;
+		#masthead{
+			margin-bottom: 0;
+		}	
+	}
+	
+	h1{
+		margin-bottom: 0;
+		padding-bottom: 0.5em;
+	}
+	
+  #carousel{
+    position: relative;
+    width: 440px;
+    height: 293px;
+
+		a{
+			position: absolute;
+			right: 5px;
+			bottom: 5px;
+		}
+  }
+
+	ul li {
+		font-weight: bold;
+	}
+	
+	form{ 
+		font-size: 1.3em;
+		line-height: 1.3em;
+		
+
+		button{
+			@include rounded-corners(8px);
+			padding: 8px;
+			cursor: pointer;
+			background: $blue;
+			color: $light;
+			border: none;
+			font-size: large;
+			
+			&:hover{
+				color: $medium;
+			}
 		}
 	}
 }

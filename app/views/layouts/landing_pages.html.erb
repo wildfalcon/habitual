@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HabitualApp: Making habits that stick</title>
+  <title><%= @title || "HabitualApp: Making habits that stick" %></title>
+  <% if defined?(@description) %>
+    <META NAME="Description" CONTENT="<%= @description %>">
+  <% end %>
   <%= stylesheet_link_tag ["reset.css", "sticky_footer","defaults.css", "layout.css", "shared.css", "pages.css"] %>
+  <%= javascript_include_tag ["lib/jquery-1.4.4.min", 
+                              "plugins/carousel"] %>
   <link rel="shortcut icon" href="/favicon.ico">
   <%= csrf_meta_tag %>
   <%= yield :head %>
-  
   <%= render :partial => "shared/google_analytics" %>
 </head>
 <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
@@ -14,15 +18,11 @@
   
   <div id="wrap">
   	
-    <%= render :partial => 'layouts/header' %>
+    <%= render :partial => 'layouts/header', :locals => {:hide_nav => false, :hide_ad => false, :hide_flash => true}%>
     
   	<div id="main">
-  	  <div id="primary">
         <%= yield %>
-  	  </div>
-      <div id="secondary">
-        <%= yield :secondary %>
-      </div>
+
   	</div>
   	
   </div>

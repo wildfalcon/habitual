@@ -16,6 +16,10 @@ Habitual::Application.routes.draw do
   match '/about' => 'static#about'
   match '/donate' => 'static#donate'
 
+  # Landing Pages
+  match "/break-bad-habits" => "landing_pages#break_bad_habits"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

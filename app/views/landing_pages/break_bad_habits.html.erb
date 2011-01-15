@@ -1,0 +1,57 @@
+<% content_for :head do %>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $('#carousel').carousel([
+      ['smoking.jpg', '<a href="http://www.flickr.com/photos/ducdigital/3206288700/">Photo by DucDigital</a>'],
+      ['candy.jpg', '<a href="http://www.flickr.com/photos/emzee/278221145/">Photo by *Micky</a>']
+      ], {
+        images_path: 'images/landing/bad_habits'
+      }
+    );
+  });
+</script>
+<% end %>
+
+
+<div class="row1">
+  <h1>How to Break Bad Habits</h1>
+</div>
+
+<div class="row2">
+  <div class="left">
+    <div id="carousel"></div> <!-- Filled in by js -->
+  </div>
+  <div class="right">
+    <h2>It takes 30 Days to Break a Bad Habit</h2>
+    <div class="main_copy">
+      <p>Just deciding to break a bad habit probably isn't going to work. It takes a combination of desire, intent and will power. You bring the desire, and the intent to stop for 30 days, and we will help with the will power.</p> 
+
+      <p>HabitualApp helps you keep track of each day you don't indulge in your bad habit, and makes you start again from day one if you slip. Its tough love, but it works.</p>
+
+      <ul>
+        <li>Piack a habit to break. Maybe Smoking or Overeating</li>
+        <li>Don't induldge in your habit for one day</li>
+        <li>Mark that day as a success</li>
+        <li>Repeat another 29 times</li>
+      </ul>
+    </div>
+    <div class="cta">
+      <form action="/signup">
+        <lable>Start breaking a habit now</label>
+        <button>Free Account</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row3">
+  <div class="left">
+    <h3>Earn Trust</h3>
+  </div>
+  <div class="right">
+    <h3>Explain Habitual</h3>
+  </div>
+</div>
+
+
+
