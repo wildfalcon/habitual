@@ -1,20 +1,24 @@
 Habitual::Application.routes.draw do
 
+  # Home pages
+  root :to => "home#index"
+  match "/signup" => "home#signup"
+
   # resources :common_habits
   resources :featured_habits
-
-  # resources :articles
-
-  root :to => "home#index"
-
   resources :habits
   resources :completed_habits
   resources :friends_habits
 
+  # Static Pages
   match '/tos' => 'static#tos'
   match '/privacy' => 'static#privacy'
   match '/about' => 'static#about'
   match '/donate' => 'static#donate'
+
+  # Landing Pages
+  match "/break-bad-habits" => "landing_pages#break_bad_habits"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

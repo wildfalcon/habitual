@@ -182,3 +182,54 @@
 		}
 	} 
 }
+
+
+/* Rows and columns used on static, home, and landing pages mainly */
+.row1,.row2,.row3{
+	
+	ul,ol{
+		margin-bottom: 1.5em;
+	}
+	
+	p,li {
+		line-height: 1.2em;
+	}
+	
+  padding-bottom: 5px;
+  .left,.right{
+    padding: 1%;
+    width: 48%;    
+  }
+  
+  .left{
+    float: left;
+  }
+  .right{
+    float: right;
+    
+  }
+}
+
+.row1{
+  h1{
+    font-size: 3em;
+  }
+}
+
+.row2{
+  @include clearfix  
+}
+
+/* Testemonial */
+.testimonial {
+	@include rounded-corners(5px);
+	margin-bottom: 5px;
+	padding: 5px;
+	background: $light;
+	
+	.signature{
+		font-size: small;
+		text-align: right;
+		font-style: italic;
+	}
+}

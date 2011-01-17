@@ -2,26 +2,30 @@
 
   <div id="masthead">
         <div id="logo"></div>
-        <%= render :partial => "shared/google_banner_ad" %>
+        <% unless defined?(hide_ad) and hide_ad==true %>
+          <%= render :partial => "shared/google_banner_ad" %>
+        <% end %>
   </div>
   
-  <div class="clearfix">
-   
-  </div>
-      
-      <div id="nav">
-        <ul>
-          <li class="<%= "selected" if current_page?({:controller => 'habits', :action => 'index'}) %>"><%= link_to "Habits", {:controller => 'habits', :action => 'index'} %></li>
-          <li class="<%= "selected" if current_page?({:controller => 'static', :action => 'about'}) %>"><%= link_to "About", {:controller => 'static', :action => 'about'} %></li>
-          <li  class="<%= "selected" if current_page?({:controller => 'static', :action => 'donate'}) %>"><%= link_to "Donate", {:controller => 'static', :action => 'donate'} %></li>
-        </ul>
-      </div>
-      <div id="breadcrumbs">
-        
-      </div>
-      
-      <div id="flash">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </div>
+  <div class="clearfix"></div>
+  
+  <% unless defined?(hide_nav) and hide_nav==true %>
+    <div id="nav">
+      <ul>
+        <li class="<%= "selected" if current_page?({:controller => 'habits', :action => 'index'}) %>"><%= link_to "Habits", {:controller => 'habits', :action => 'index'} %></li>
+        <li class="<%= "selected" if current_page?({:controller => 'static', :action => 'about'}) %>"><%= link_to "About", {:controller => 'static', :action => 'about'} %></li>
+        <li  class="<%= "selected" if current_page?({:controller => 'static', :action => 'donate'}) %>"><%= link_to "Donate", {:controller => 'static', :action => 'donate'} %></li>
+      </ul>
+    </div>
+    <div id="breadcrumbs"></div>
+  <% end %>
+  
+  
+  <% unless defined?(hide_nav) and hide_nav==true %>
+    <div id="flash">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+
 </div>

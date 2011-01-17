@@ -8,17 +8,9 @@ body#static {
 	#primary{
 		padding-left: 10px;
 	}
-
-/*	ul{
-		margin: 0 0;
-		@include clearfix;
-		li{
-			margin-left: 35px;
-		}
-	}*/
 }
 
-body#home.index{
+body#home{
   background: $dark;
 
   #header{
@@ -31,6 +23,7 @@ body#home.index{
 			text-align: center;
 			font-size: 1.2em;
 			ul{
+			  margin: 0;
 				li{
 					list-style-type: none;
 					float: left;
@@ -69,8 +62,8 @@ body#home.index{
 			height: 130px;
 			float: left;
 			
-			fieldset{
-			  margin: 400px;
+			h2{
+				font-size: 1em;
 			}
 		}
 		.right_column {
@@ -149,4 +142,80 @@ body#home.index{
 			margin-bottom: 10px;
 		}
 	}
+}
+
+body#landing_pages.break_bad_habits{
+
+	#wrap{
+		background: $medium;
+	}
+
+	#header,#masthead,.row1,.row2{
+		background: $light;
+	}
+		
+	#header {
+		margin-bottom: 0;
+		padding-bottom: 5px;
+		#masthead{
+			margin-bottom: 0;
+		}	
+	}
+	
+	h1{
+		margin-bottom: 0;
+		padding-bottom: 0.1em;
+	}
+	
+  #carousel{
+    position: relative;
+    width: 440px;
+    height: 293px;
+
+		a{
+			position: absolute;
+			right: 5px;
+			bottom: 5px;
+		}
+  }
+
+	ul li {
+		font-weight: bold;
+	}
+	
+	form{ 
+		font-size: 1.3em;
+		line-height: 1.3em;
+		
+
+		button{
+			@include rounded-corners(8px);
+			padding: 8px;
+			cursor: pointer;
+			background: $blue;
+			color: $light;
+			border: none;
+			font-size: large;
+			
+			&:hover{
+				color: $medium;
+			}
+		}
+	}
+
+	.row3{
+		.left{
+			width: 25%;
+		}
+		.right{
+			width: 71%;
+			float: left;
+			
+			img{
+				height: 137px;
+				margin-right: 5px;
+			}
+		}
+	}
+
 }

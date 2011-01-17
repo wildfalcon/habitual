@@ -4,7 +4,6 @@ body{
 }
 #wrap {
 	width: 960px;
-/*	padding: 0 20px;*/
 	margin: 0 auto;
 	background: $light;
 	
@@ -14,31 +13,7 @@ body{
 
     #top{
       @incldue clearfix;
-      height: 25px;
-      
-      #fb_like{
-        float: left;
-        height: 23px;
-        padding-left: 3px;
-      }
-      #super_nav{
-				height: 90px;
-				margin-top: 10px;
-				float: right;
-				
-				ul{
-					li{
-						float: left;
-						list-style-type: none;
-						margin-right: 10px;
-						font-size: 1.3em;
-						
-						form{
-							margin-top: -5px;
-						}
-					}
-				}
-			}
+      height: 25px;     
     }
 
 		#masthead{
@@ -53,7 +28,11 @@ body{
         background: url("images/logo.png");
 				float: left;
 			}
-			
+
+			#banner_ad{
+				float: right;
+				margin-right: 1px;
+			}
 			
 		}
 		
