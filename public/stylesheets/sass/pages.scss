@@ -10,7 +10,7 @@ body#static {
 	}
 }
 
-body#home.index{
+body#home{
   background: $dark;
 
   #header{
@@ -23,6 +23,7 @@ body#home.index{
 			text-align: center;
 			font-size: 1.2em;
 			ul{
+			  margin: 0;
 				li{
 					list-style-type: none;
 					float: left;

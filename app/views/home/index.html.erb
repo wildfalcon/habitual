@@ -1,16 +1,6 @@
 <div id="row1">
-  <div class="left_column">
-    <div id="login">
-      <h2>Log in with your Facebook account</h2>
-      <div id="fb">
-        <fb:login-button perms="email,publish_stream"></fb:login-button>
-      </div>
-    </div>
-  </div>
+  <%= render :partial => 'signup_or_login' %>
 
-  <div class="right_column">
-    <%= render :partial => "shared/mailchimp_form" %>
-  </div>
 </div>
 
 
