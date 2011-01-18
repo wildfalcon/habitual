@@ -220,6 +220,49 @@
   @include clearfix  
 }
 
+/* Calls to Action*/
+div.cta{
+  form{ 
+    font-size: 1.3em;
+    line-height: 1.3em;
+
+
+    button{
+      @include rounded-corners(8px);
+      padding: 8px;
+      cursor: pointer;
+      background: $blue;
+      color: $light;
+      border: none;
+      font-size: large;
+
+      &:hover{
+        color: $medium;
+      }
+    }
+  } 
+}
+
+/* Connect widgets */
+.connect {
+  .facebook,.twitter{
+    @include rounded-corners(5px);
+  	margin-bottom: 10px;
+  	height: 22px;
+  	line-height: 22px;
+  	padding: 5px;
+  	font-size: 1.2em;
+  	padding-left: 35px;
+  	background: $light;
+  }
+  
+  .facebook{
+    background: $light url("images/icons/connect_sprite.png") no-repeat;
+  }
+  .twitter{
+    background: $light url("images/icons/connect_sprite.png") no-repeat 0 -38px ;
+  }
+}
 /* Testemonial */
 .testimonial {
 	@include rounded-corners(5px);
