@@ -17,34 +17,31 @@ body#home{
   #header{
 		background: $medium;
 			
-		#super_nav{
-			@include clearfix;
-			width: 193px;
-			margin: 0 auto;
-			text-align: center;
-			font-size: 1.2em;
-			ul{
-			  margin: 0;
-				li{
-					list-style-type: none;
-					float: left;
-					margin-right: 10px;
-				}
-			}
-		}
 
-    #nav{
-      @include rounded_corners(0);
-      height: 50px;
-    }
-
-    #masthead{
-      padding-top:20px;			
+    #masthead{		
 			background: $medium;
       #logo{
         margin: 0 auto;
-        float: none;
+        float: left;
       }
+      #super_nav{
+  			@include clearfix;
+        position: absolute;
+        margin-left:400px;
+  			text-align: center;
+  			font-size: 1.2em;
+  			ul{
+  			  margin: 0;
+  				li{
+  					list-style-type: none;
+  					float: left;
+  					margin-right: 10px;
+  				}
+  			}
+  		}
+  		#fb{
+  		  float: right;
+  		}
     }
   }
 

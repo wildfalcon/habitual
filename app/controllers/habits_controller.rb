@@ -15,6 +15,6 @@ class HabitsController < ApplicationController
   end
   
   def check_logged_in
-    redirect_to root_path unless user_logged_in?
+    render :action => "logged_out" unless user_logged_in?
   end
 end

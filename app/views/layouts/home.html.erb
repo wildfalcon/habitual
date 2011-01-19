@@ -39,18 +39,21 @@
   <div id="wrap">
   	
   	<div id="header">
-    <%= render :partial => "shared/super_nav" %>
-  	  <div id="masthead">
+     
+      <div id="masthead">
         <div id="logo"></div>
-  	  </div>
-      
+         <%= render :partial => "shared/super_nav" %>
+         <div id="fb">
+           <fb:login-button perms="email,publish_stream"></fb:login-button>
+         </div>
+         
+      </div>
 
-      
       <div id="flash">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
       </div>
-  	</div>
+    </div>
   	
   	<div id="main">
   	 
