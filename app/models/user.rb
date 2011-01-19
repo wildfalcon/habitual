@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     
     def friends_with_habits
       # A beer to anyone who can do this in SQL that works in both Mysql and Postgres
-      friends.includes(:habits).select{|u| u.habits.uncompleted.count > 0}
+      friends.includes(:habits).select{|u| u.habits.uncompleted.nonsecret.count > 0}
     end
 
     def post_to_facebook(message)

@@ -6,6 +6,8 @@ class Habit < ActiveRecord::Base
 
   scope :completed, where(:completed => true)
   scope :uncompleted, where(:completed => false)
+  scope :secret, where(:secret => true)
+  scope :nonsecret, where(:secret => false)
 
   before_create :set_start_date
   before_save :complete_if_done
@@ -33,9 +35,11 @@ class Habit < ActiveRecord::Base
   end
 
   def post_to_facebook
-    post_start_to_facebook if new_record?
-    post_progress_to_facebook if last_completed_date_changed?
-    post_completion_to_facebook if last_completed_date_changed?
+    unless self.secret
+      post_start_to_facebook if new_record?
+      post_progress_to_facebook if last_completed_date_changed?
+      post_completion_to_facebook if last_completed_date_changed?
+    end
   end
 
   def post_start_to_facebook

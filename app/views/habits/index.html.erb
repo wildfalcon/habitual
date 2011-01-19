@@ -3,17 +3,17 @@
 
   app = $.sammy(function(){
     this.post('#/habits', function(){
-      var confirmed = confirm("This will create a new habit and post to Facebook to say every day you will "+this.params.name+"\n Do you want to continue?");
-      if (confirmed){
-        var habit = new Habit({name: this.params.name});
-        habit.save(function(success){
-          if (success) $(document).trigger('close.facebox')
-        });
-      }
+      var habit = new Habit({
+        name: this.params.name,
+        secret: this.params.secret
+      });
+      habit.save(function(success){
+        if (success) $(document).trigger('close.facebox')
+      });
     });
     
-    this.del("#/habits/:id", function(){
-      var habit = Habit.find(this.params['uid']);
+    this.del("#/habits/:uid", function(){
+      var habit = Habit.find_by_uid(this.params['uid']);
       habit.destroy(function(success){
         if (success){
           habit.trigger("remove");
@@ -25,6 +25,10 @@
   online = true
   
   $(function() {
+    $.facebox.settings.closeImage   = '/images/closelabel.png'
+    $.facebox.settings.loadingImage = '/images/loading.gif'
+  	
+
     $('.habits').habitList();
     $('#completed_habits').completedHabits();
     $('#friends_habits').friendsHabitsList();
@@ -61,16 +65,26 @@
 <div id="new_habit">
   <a href="#new_habit_form" rel="facebox">Create a new Habit</a>
   <div id="new_habit_form">
-    <form action="#/habits", method="post">
-      <fieldset>
-        <legend></legend>
-        <p>Create a new habit, and post it to Facebook</p>
-        <p>Every day, for 30 days, I'm going to:</p>
-      <label id="name">Name</label>
-      <input type="textfield" name="name" class="text"></input><br/>
-      <button type="submit">Create and post to Facebook</input>
-      </fieldset>
-    </form>
+    <div id="new_habit_form_content">
+      <div class="head">
+        <h3>Create a new Habit</h3>        
+      </div>
+
+      <form action="#/habits", method="post">
+        <fieldset>
+          <legend></legend>
+          <p class="input_frame">Every day, for 30 days, I'm going to:</p>
+          <label id="name">Name</label>
+          <input type="textfield" name="name" class="text"></input><br/>
+          
+          <div class="secrecy">
+            <input type="radio" name="secret" value="false" checked/> Share my habit on Facebook so my friends can support me<br />
+            <input type="radio" name="secret" value="true" /> I don't want my friends to know about this. Keep it secret.
+          </div>
+          <button type="submit">Create Habit</input>
+        </fieldset>
+      </form>
+    </div>
   </div>
 </div>
 
