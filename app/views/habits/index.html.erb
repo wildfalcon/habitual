@@ -6,7 +6,9 @@
       var confirmed = confirm("This will create a new habit and post to Facebook to say every day you will "+this.params.name+"\n Do you want to continue?");
       if (confirmed){
         var habit = new Habit({name: this.params.name});
-        habit.save();
+        habit.save(function(success){
+          if (success) $(document).trigger('close.facebox')
+        });
       }
     });
     
@@ -26,6 +28,7 @@
     $('.habits').habitList();
     $('#completed_habits').completedHabits();
     $('#friends_habits').friendsHabitsList();
+    $('a[rel*=facebox]').facebox()
     app.run();    
     Habit.load(function(){
       if (Habit.all().length==0){
@@ -56,17 +59,19 @@
 <% end %>
 
 <div id="new_habit">
-  <h3>Create a new habit</h3>
-  <form action="#/habits", method="post">
-    <fieldset>
-      <legend></legend>
-      <p>Create a new habit, and post it to Facebook</p>
-      <p>Every day, for 30 days, I'm going to:</p>
-    <label id="name">Name</label>
-    <input type="textfield" name="name" class="text"></input><br/>
-    <button type="submit">Create and post to Facebook</input>
-    </fieldset>
-  </form>
+  <a href="#new_habit_form" rel="facebox">Create a new Habit</a>
+  <div id="new_habit_form">
+    <form action="#/habits", method="post">
+      <fieldset>
+        <legend></legend>
+        <p>Create a new habit, and post it to Facebook</p>
+        <p>Every day, for 30 days, I'm going to:</p>
+      <label id="name">Name</label>
+      <input type="textfield" name="name" class="text"></input><br/>
+      <button type="submit">Create and post to Facebook</input>
+      </fieldset>
+    </form>
+  </div>
 </div>
 
 <div id="completed_habits">
