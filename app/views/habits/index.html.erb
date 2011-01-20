@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <script type="text/javascript" charset="utf-8">
+  <script type="text/javascript" charset="utf-8">  
 
   app = $.sammy(function(){
     this.post('#/habits', function(){
@@ -25,15 +25,13 @@
   online = true
   
   $(function() {
-    $.facebox.settings.closeImage   = '/images/closelabel.png'
-    $.facebox.settings.loadingImage = '/images/loading.gif'
   	
 
     $('.habits').habitList();
     $('#completed_habits').completedHabits();
     $('#friends_habits').friendsHabitsList();
     $('a[rel*=facebox]').facebox()
-    app.run();    
+   app.run();    
     Habit.load(function(){
       if (Habit.all().length==0){
         FeaturedHabit.load();

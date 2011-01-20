@@ -306,8 +306,6 @@
     hideOverlay()
   })
 
-	$.facebox.settings.closeImage   = '/images/closelabel.png'
-  $.facebox.settings.loadingImage = '/images/loading.gif'
 
 
 })(jQuery);
