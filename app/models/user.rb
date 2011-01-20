@@ -6,9 +6,6 @@ class User < ActiveRecord::Base
   
     serialize :friend_ids, Array
   
-    # after_create :pull_profile_from_facebook
-    # after_create :pull_friend_ids_from_facebook
-
     def profile_url(size = "square")
       "https://graph.facebook.com/#{uid}/picture?type=square"
     end
