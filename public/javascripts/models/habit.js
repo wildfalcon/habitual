@@ -1,5 +1,12 @@
 var Habit = Model("habit", {
-	persistence: Model.REST("/habits")
+	persistence: Model.REST("/habits"),
+	find_by_uid: function(uid){
+		var habit = null
+		$.each(Habit.all(), function(index, elem){
+			if (elem.attr("uid") == uid) habit = elem;
+		});
+		return habit;
+	}
 }, {
   initialize: function() {
     

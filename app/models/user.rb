@@ -1,16 +1,20 @@
 require 'net/https'
 
 class User < ActiveRecord::Base
+
+    scope :active, lambda { where("updated_at > ?", Time.now - 2.weeks)  }
+    scope :inactive, lambda { where("updated_at <= ?", Time.now - 2.weeks)  }
   
     has_many :habits, :dependent => :destroy
   
     serialize :friend_ids, Array
   
-    # after_create :pull_profile_from_facebook
-    # after_create :pull_friend_ids_from_facebook
-
     def profile_url(size = "square")
       "https://graph.facebook.com/#{uid}/picture?type=square"
+    end
+    
+    def lifetime_in_days
+      return ((updated_at - created_at)/60/60/24).to_i
     end
 
     def friends
@@ -19,7 +23,7 @@ class User < ActiveRecord::Base
     
     def friends_with_habits
       # A beer to anyone who can do this in SQL that works in both Mysql and Postgres
-      friends.includes(:habits).select{|u| u.habits.uncompleted.count > 0}
+      friends.includes(:habits).select{|u| u.habits.uncompleted.nonsecret.count > 0}
     end
 
     def post_to_facebook(message)

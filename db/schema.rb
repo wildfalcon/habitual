@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110112122239) do
+ActiveRecord::Schema.define(:version => 20110119144903) do
 
   create_table "articles", :force => true do |t|
     t.string   "author"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20110112122239) do
     t.integer  "common_habit_id"
     t.boolean  "completed",           :default => false
     t.string   "uid"
+    t.boolean  "secret",              :default => false
   end
 
   create_table "users", :force => true do |t|
