@@ -26,6 +26,30 @@ class User < ActiveRecord::Base
       friends.includes(:habits).select{|u| u.habits.uncompleted.nonsecret.count > 0}
     end
 
+    def subscribe_to_mailchimp!     
+      unless self.sent_to_mailchimp?
+        gb = Gibbon::API.new(ENV["MAILCHIMP_API_KEY"])
+
+        lists = gb.lists({:start => 0, :limit=> 100})    
+        list_id = lists["data"].detect{|l| l['name']=="HabitualApp List"}['id']
+
+        
+        first, last = nil, nil
+        first, last = name.split if name.present?
+
+        ret = gb.list_subscribe(:id => list_id, 
+                                :email_address => email, 
+                                :merge_vars => {:FNAME => first, :LNAME => last})
+
+        if ret == "true"
+          self.sent_to_mailchimp = true 
+        else
+          puts "got a return of #{ret}"
+        end
+        self.save!
+      end
+    end
+
     def post_to_facebook(message)
       if Rails.env == "production"
         url = URI.parse("https://graph.facebook.com/#{uid}/feed")
