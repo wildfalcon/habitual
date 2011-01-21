@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
       friends.includes(:habits).select{|u| u.habits.uncompleted.nonsecret.count > 0}
     end
 
-    def subscribe_to_mailchimp!     
+    def subscribe_to_mailchimp! 
+      ret = nil    
       unless self.sent_to_mailchimp?
         gb = Gibbon::API.new(ENV["MAILCHIMP_API_KEY"])
 
@@ -48,6 +49,7 @@ class User < ActiveRecord::Base
         end
         self.save!
       end
+      return ret
     end
 
     def post_to_facebook(message)
