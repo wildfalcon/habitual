@@ -21,11 +21,19 @@
       display: block;
       background: $blue;
       color: $light;
+      border: 1px solid $blue;
       @include rounded_corners(5px);
       padding: 5px;
       font-size: 1.2em;
       line-height: 1.2em;
       text-align: center;
+      cursor: pointer;
+      
+      &:hover{
+        background: $dark;
+        color: $light;
+      }
+      
     }
 
   }
@@ -53,10 +61,11 @@
   div#new_habit_form_content{
     width: 500px;
 		.head{
+		  @include rounded-corners(5px);
+		  text-align: center;
 			background: $blue;
 			color: $light;
 			padding: 5px;
-			margin-right: 10px;
 			margin-bottom: 10px;
 			h3{
 				font-size: 2em;
@@ -67,14 +76,15 @@
     form{
       text-align: center;
 			p.input_frame{
-				font-size: 1.3em;
-				line-height: 1.3em;
+				font-size: 1.4em;
+				line-height: 1.4em;
 			}
       input.text{
         width: 340px;
-        font-size: 1.3em;
-        line-height: 1.3em;
+        font-size: 1.4em;
+        line-height: 1.4em;
         margin-bottom: 20px;
+        padding: 3px;
       }
 			input{
 				margin-bottom: 10px;
@@ -82,10 +92,72 @@
       label{
         display: none;
       }
-
-			div.secrecy{
-				font-size: 0.8em;
-			}
+      div.settings{
+        text-align: left;
+        @include clearfix;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+        
+        div.secrecy{
+          width: 45%;
+          float: left;
+          div{
+            @include clearfix;
+            margin-bottom: 5px;
+            input{
+              display: block;
+              float: left;
+              width: 10%;
+              
+            }
+            label{
+              display: block;
+              float: left;
+              width: 85%;              
+            }
+          }
+        }
+        
+        div.reminders{
+          display: none;
+          width: 45%;
+          float: right;
+          div{
+            @include clearfix;
+            margin-bottom: 5px;
+            input{
+              display: block;
+              float: left;
+              width: 10%;
+              
+            }
+            label{
+              display: block;
+              float: left;
+              width: 85%;              
+            }
+          }
+        }
+      }
+      
+      button{
+        display: block;
+        border: 1px solid $blue;
+        @include rounded_corners(5px);
+        width: 200px;
+        height: 30px;
+        font-size: 1.2em;
+        color: $light;
+        background: $blue;
+        margin: 0 auto;
+        cursor: pointer;
+                
+        &:hover{
+          color: $blue;
+          background:$dark;
+        }
+      }
+    
     }
   }
 }

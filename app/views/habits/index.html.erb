@@ -74,10 +74,25 @@
           <p class="input_frame">Every day, for 30 days, I'm going to:</p>
           <label id="name">Name</label>
           <input type="textfield" name="name" class="text"></input><br/>
-          
-          <div class="secrecy">
-            <input type="radio" name="secret" value="false" checked/> Share my habit on Facebook so my friends can support me<br />
-            <input type="radio" name="secret" value="true" /> I don't want my friends to know about this. Keep it secret.
+            
+          <div class="settings">
+            <div class="secrecy">
+              <div>
+                <input type="radio" name="secret" value="false" id="public" checked/> 
+                <label for="public">Share my habit on Facebook so my friends can support me</label>
+              </div>
+              <div>
+                <input type="radio" name="secret" value="true" id="secret"/> 
+                <label for="secret"> I don't want my friends to know about this. Keep it secret.</label>
+              </div>
+
+            </div>
+            <div class="reminders">
+              <div>
+                <input type="checkbox" name="remind" id="remind" value="true" checked/>
+                <label for="remind">Send me reminders about this Habit </label>
+              </div>
+            </div>
           </div>
           <button type="submit">Create Habit</input>
         </fieldset>
