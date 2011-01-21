@@ -8,6 +8,7 @@ gem "json"
 gem 'hassle', :git => "https://github.com/Papipo/hassle.git"
 gem 'hoptoad_notifier'
 gem 'uuidtools'
+gem 'gibbon'
 
 group :development, :test do
   gem 'rspec-rails'
