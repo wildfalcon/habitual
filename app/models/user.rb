@@ -1,6 +1,9 @@
 require 'net/https'
 
 class User < ActiveRecord::Base
+
+    scope :active, lambda { where("updated_at > ?", Time.now - 2.weeks)  }
+    scope :inactive, lambda { where("updated_at <= ?", Time.now - 2.weeks)  }
   
     has_many :habits, :dependent => :destroy
   
@@ -8,6 +11,10 @@ class User < ActiveRecord::Base
   
     def profile_url(size = "square")
       "https://graph.facebook.com/#{uid}/picture?type=square"
+    end
+    
+    def lifetime_in_days
+      return ((updated_at - created_at)/60/60/24).to_i
     end
 
     def friends
